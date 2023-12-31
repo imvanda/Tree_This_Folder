@@ -4,6 +4,7 @@ SETLOCAL EnableExtensions
 
 :: 定义脚本相对路径
 md "C:\Program Files\Tree This Folder"
+copy "%~dp0TreeThisFolder.ico" "C:\Program Files\Tree This Folder\TreeThisFolder.ico"
 copy "%~dp0..\复制且输出txt\main0.bat" "C:\Program Files\Tree This Folder\treetxt.bat"
 copy "%~dp0..\复制且输出md\main0.bat" "C:\Program Files\Tree This Folder\treemd.bat"
 copy "%~dp0..\复制且输出md\treemd.exe" "C:\Program Files\Tree This Folder\treemd.exe"
