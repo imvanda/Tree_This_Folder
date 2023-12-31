@@ -30,7 +30,7 @@
 
 输出 markdown 效果如下：
 
-![输出 markdown 效果](%E8%BE%93%E5%87%BAmarkdown%E6%95%88%E6%9E%9C.png)如下：
+![输出 markdown 效果](%E8%BE%93%E5%87%BAmarkdown%E6%95%88%E6%9E%9C.png)
 
 markdown 导入 xmind 效果如下：
 
