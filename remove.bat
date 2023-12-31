@@ -1,4 +1,5 @@
 @echo off
+Net session >nul 2>&1 || powershell start-process remove.bat -verb runas
 SETLOCAL EnableExtensions
 
 :: 定义先前添加的脚本名称
