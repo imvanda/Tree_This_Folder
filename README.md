@@ -8,27 +8,31 @@
 
 # ✨ 实现效果如图：
 
-1. 仅复制到剪贴板 / 复制且输出 txt / 复制且输出 md 右键菜单效果 （点击即用）：
+1. 右键菜单效果图
 
-![生成文件夹结构](assets/%E7%94%9F%E6%88%90%E6%96%87%E4%BB%B6%E5%A4%B9%E7%BB%93%E6%9E%84.png)
+![右键菜单效果图](assets/%E5%A4%8D%E5%88%B6%E4%B8%94%E8%BE%93%E5%87%BAmd%E6%88%96txt.png)
 
-2. 复制且输出 md 或 txt 右键菜单效果 （通过子菜单选择输出 md 还是 txt）：
+右键菜单效果图功能解释：
 
-![复制且输出md或txt](assets/%E5%A4%8D%E5%88%B6%E4%B8%94%E8%BE%93%E5%87%BAmd%E6%88%96txt.png)
+    1. 生成文件夹结构，通过子菜单选择生成 md 还是 txt 文件；
 
-3. 输出 txt 效果
+    2. 复制文件夹结构，仅复制到剪贴板，不生成文件；
+
+    3. 生成文件夹结构，复制到剪贴板，并且生成txt或md文件，功能二选一只能其中一种，取决于 [[使用方法]]。
+
+2. 输出 txt 效果
 
 ![输出txt效果](assets/%E8%BE%93%E5%87%BAtxt%E6%95%88%E6%9E%9C.png)
 
-4. txt 导入 ChatGPT 效果：
+3. txt 导入 ChatGPT 效果：
 
 ![txt导入ChatGPT效果](assets/txt%E5%AF%BC%E5%85%A5ChatGPT%E6%95%88%E6%9E%9C.png)
 
-5. 输出 markdown 效果
+4. 输出 markdown 效果
 
 ![输出markdown效果](assets/%E8%BE%93%E5%87%BAmarkdown%E6%95%88%E6%9E%9C.png)
 
-6. markdown 导入 xmind 效果
+5. markdown 导入 xmind 效果
 
 ![markdown 导入 xmind 效果](assets/md%E5%AF%BC%E5%85%A5xmind%E6%95%88%E6%9E%9C.png)
 
@@ -46,26 +50,34 @@
 
 ## 1. 只需要复制到剪贴板功能
 
-使用 🛡️**管理员权限** 运行 📁`仅复制` 文件夹下的 `add1.bat`即可。
+使用 🛡️**管理员权限** 运行 📁`仅复制` 文件夹下的 `add_treejustcopy.bat`即可。
 
 ## 2. 需要复制且输出 txt 功能
 
-使用 🛡️**管理员权限** 运行 📁`复制且输出txt` 文件夹下的 `add0.bat`即可。
+使用 🛡️**管理员权限** 运行 📁`复制且输出txt` 文件夹下的 `add_treetxt.bat`即可。
 
-## 3. 需要复制且输出 txt 或 markdown 功能
+## 3. 需要复制且输出 md 功能
+
+使用 🛡️**管理员权限** 运行 📁`复制且输出md` 文件夹下的 `add_treemd.bat`即可。
+
+## 4. 需要复制且输出 txt 或 markdown 功能
 
 使用 🛡️**管理员权限** 运行 📁`复制且输出md或txt` 文件夹下的 `add_treeMDorTXT.bat`即可。
 
 ---
 
-# ❗ 请注意:
-
-后续使用请保持 main bat 文件路径稳定（因为原理为每次使用时调用），建议放在**不易改变的路径**下
-
----
-
 # 🗑️ 卸载与移除
 
-如需复原，使用 🛡️**管理员权限** 运行 `remove.bat`即可。
+## 1. 移除 复制文件夹结构
+
+使用 🛡️**管理员权限** 运行 📁`仅复制` 文件夹 或 📁`C:\Program Files\Tree This Folder` 文件夹 下的 `remove_treejustcopy.bat`即可。
+
+## 2. 移除 生成文件夹结构
+
+    2.1 使用 🛡️**管理员权限** 运行 📁`复制且输出txt` 文件夹 或 📁`C:\Program Files\Tree This Folder` 文件夹 下的 `remove_treetxt.bat`即可。
+
+    2.2 使用 🛡️**管理员权限** 运行 📁`复制且输出md` 文件夹 或 📁`C:\Program Files\Tree This Folder` 文件夹 下的 `remove_treemd.bat`即可。
+
+## 3. 移除 生成文件夹结构 \*多选
 
 使用 复制且输出 md 或 txt ，卸载与移除需使用 🛡️**管理员权限** 运行 📁`复制且输出md或txt` 文件夹 或 📁`C:\Program Files\Tree This Folder` 文件夹 下的 `remove_treeMDorTXT.bat`。
