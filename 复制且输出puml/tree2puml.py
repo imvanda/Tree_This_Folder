@@ -5,7 +5,12 @@ import sys
 import hashlib
 import pyperclip
 
-
+def has_single_subdir(path):
+    """Check if a directory contains only a single subdirectory."""
+    items = os.listdir(path)
+    if len(items) == 1 and os.path.isdir(os.path.join(path, items[0])):
+        return items[0]
+    return None
 def clean_identifier(identifier):
     """Replace special characters with underscores in identifier."""
     return identifier.replace('.', '_').replace(os.sep, '_').replace('-', '_').replace(' ', '_')
@@ -21,6 +26,14 @@ def generate_plantuml_content(base_path, current_path, level, level_limit):
             continue
 
         sub_path = os.path.join(current_path, name)
+
+        if os.path.isdir(sub_path):
+            single_subdir = has_single_subdir(sub_path)
+            if single_subdir:
+                sub_path = os.path.join(sub_path, single_subdir)
+                name = os.path.join(name, single_subdir)
+
+
         relative_path = os.path.relpath(sub_path, base_path)
         identifier = clean_identifier(relative_path)
 
