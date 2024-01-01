@@ -8,7 +8,7 @@ copy "%~dp0TreeThisFolder.ico" "C:\Program Files\Tree This Folder\TreeThisFolder
 copy "%~dp0..\复制且输出txt\main0.bat" "C:\Program Files\Tree This Folder\treetxt.bat"
 copy "%~dp0..\复制且输出md\main0.bat" "C:\Program Files\Tree This Folder\treemd.bat"
 copy "%~dp0..\复制且输出md\treemd.exe" "C:\Program Files\Tree This Folder\treemd.exe"
-copy "%~dp0..\复制且输出puml\main0.bat" "C:\Program Files\Tree This Folder\tree2puml.bat"
+copy "%~dp0..\复制且输出puml\tree2puml.bat" "C:\Program Files\Tree This Folder\tree2puml.bat"
 copy "%~dp0..\复制且输出puml\tree2puml.exe" "C:\Program Files\Tree This Folder\tree2puml.exe"
 :: 在文件夹背景中添加右键菜单项
 reg import "%~dp0生成文件夹结构_目录.reg"
