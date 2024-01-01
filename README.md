@@ -1,10 +1,11 @@
 # Tree_This_Folder
 
-## 为你的右键添加 tree 命令功能，快速生成复制文件夹结构,便于 ChatGPT/你的同事 理解你的项目结构，使用 windows 批处理脚本实现。（生成 markdown 由 Python 实现）
+## 为你的右键添加 ~~"tree"~~ (Dir) 功能，快速生成复制文件夹结构,便于 ChatGPT/你的同事 理解你的项目结构，使用 windows 批处理脚本实现。（生成 markdown 由 Python 实现）
 
-## Enhance your right-click menu with a 'tree' command feature to quickly generate and copy the folder structure, aiding in the clear understanding of your project structure by ChatGPT/your colleagues, realized through a Windows batch script. (The function of generating markdown is implemented by Python)
+## Enhance your right-click menu with a ~~'tree'~~ (Dir) command feature to quickly generate and copy the folder structure, aiding in the clear understanding of your project structure by ChatGPT/your colleagues, realized through a Windows batch script. (The function of generating markdown is implemented by Python)
 
 ---
+<u> 经测试 md 相关功能在win10可能出现命令行太长无法识别，后续将尝试修复，可以暂时使用Release下的原始版本。</u>
 
 # ✨ 实现效果如图：
 
