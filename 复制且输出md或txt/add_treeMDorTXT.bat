@@ -6,7 +6,7 @@ SETLOCAL EnableExtensions
 md "C:\Program Files\Tree This Folder"
 :: 复制文件到安装目录
 copy "%~dp0TreeThisFolder.ico" "C:\Program Files\Tree This Folder\TreeThisFolder.ico"
-copy "%~dp0..\复制且输出txt\main0.bat" "C:\Program Files\Tree This Folder\treetxt.bat"
+copy "%~dp0..\复制且输出txt\treetxt.bat" "C:\Program Files\Tree This Folder\treetxt.bat"
 copy "%~dp0..\复制且输出md\treemd.bat" "C:\Program Files\Tree This Folder\treemd.bat"
 copy "%~dp0..\复制且输出md\treemd.exe" "C:\Program Files\Tree This Folder\treemd.exe"
 copy "%~dp0remove_treeMDorTXT.bat" "C:\Program Files\Tree This Folder\remove_treeMDorTXT.bat"

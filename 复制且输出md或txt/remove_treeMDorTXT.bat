@@ -6,8 +6,14 @@ SETLOCAL EnableExtensions
 REG DELETE "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\CommandStore\shell\Item0" /f
 REG DELETE "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\CommandStore\shell\Item1" /f
 REG DELETE "HKEY_CLASSES_ROOT\Directory\Background\shell\Item0" /f
+:: 延时
+ping 127.0.0.1 -n 2 >nul
 echo 右键菜单项已删除。
-:: 删除安装目录
-rd /S /Q "C:\Program Files\Tree This Folder"
+: 删除安装文件
+del /s /q "C:\Program Files\Tree This Folder\TreeThisFolder.ico"
+del /s /q "C:\Program Files\Tree This Folder\treemd.bat"
+del /s /q "C:\Program Files\Tree This Folder\treemd.exe"
+del /s /q "C:\Program Files\Tree This Folder\treetxt.bat"
+del /s /q "C:\Program Files\Tree This Folder\remove_treeMDorTXT.bat"
 pause
 ENDLOCAL
