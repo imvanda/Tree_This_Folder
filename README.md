@@ -5,7 +5,7 @@
 ## Enhance your right-click menu with a ~~'tree'~~ (Dir) command feature to quickly generate and copy the folder structure, aiding in the clear understanding of your project structure by ChatGPT/your colleagues, realized through a Windows batch script. (The function of generating markdown is implemented by Python)
 
 ---
-<u> 经测试 md 相关功能在win10可能出现命令行太长无法识别，后续将尝试修复，可以暂时使用Release下的原始版本。</u>
+# 经测试 md 相关功能在win10可能出现命令行太长无法识别，后续将尝试修复，可以暂时使用Release下的原始版本。
 
 # ✨ 实现效果如图：
 
