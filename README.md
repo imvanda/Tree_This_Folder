@@ -46,6 +46,10 @@
 
 ![puml 导入 plantuml.com效果](assets/puml导入plantuml.com.png)
 
+8. 输出 Windows 默认 tree 效果
+
+![输出tree效果](assets/输出tree效果.png)
+
 # ➕ 使用方法：
 
 ## 演示视频：
@@ -68,7 +72,7 @@
 
 使用 🛡️**管理员权限** 运行 📁`复制且输出md` 文件夹下的 `add_treemd.bat`即可。
 
-## 4. 需要复制且输出 txt 或 markdown 或 puml 功能
+## 4. 需要复制且输出 txt 或 markdown 或 puml 或 Windows 默认 tree 功能
 
 使用 🛡️**管理员权限** 运行 📁`复制且输出md或txt或puml` 文件夹下的 `add_treeMDorTXTorPUML`即可。
 
@@ -88,4 +92,4 @@
 
 ## 3. 移除 生成文件夹结构 \*多选
 
-使用 复制且输出 md 或 txt ，卸载与移除需使用 🛡️**管理员权限** 运行 📁`复制且输出md或txt` 文件夹 或 📁`C:\Program Files\Tree This Folder` 文件夹 下的 `remove_treeMDorTXTorPUML.bat`。
+使用 生成文件夹结构 \*多选 ，卸载与移除需使用 🛡️**管理员权限** 运行 📁`复制且输出md或txt或puml或tree` 文件夹 或 📁`C:\Program Files\Tree This Folder` 文件夹 下的 `remove_treeMDorTXTorPUMLorTREE.bat`。
