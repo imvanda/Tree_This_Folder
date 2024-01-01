@@ -54,7 +54,7 @@
 
 ## 3. 需要复制且输出 txt 或 markdown 功能
 
-使用 🛡️**管理员权限** 运行 📁`复制且输出md或txt` 文件夹下的 `add0.bat`即可。
+使用 🛡️**管理员权限** 运行 📁`复制且输出md或txt` 文件夹下的 `add_treeMDorTXT.bat`即可。
 
 ---
 
@@ -68,4 +68,4 @@
 
 如需复原，使用 🛡️**管理员权限** 运行 `remove.bat`即可。
 
-使用 复制且输出 md 或 txt ，卸载与移除需运行 📁`复制且输出md或txt` 文件夹下的 `remove.bat`。
+使用 复制且输出 md 或 txt ，卸载与移除需使用 🛡️**管理员权限** 运行 📁`复制且输出md或txt` 文件夹 或 📁`C:\Program Files\Tree This Folder` 文件夹 下的 `remove_treeMDorTXT.bat`。
