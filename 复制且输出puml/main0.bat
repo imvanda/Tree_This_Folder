@@ -1,3 +1,4 @@
+@echo off
 SETLOCAL EnableExtensions
 
 echo Running script with debugging information...
