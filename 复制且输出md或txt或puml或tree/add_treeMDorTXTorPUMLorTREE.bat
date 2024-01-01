@@ -12,7 +12,7 @@ copy "%~dp0..\复制且输出md\treemd.exe" "C:\Program Files\Tree This Folder\treemd
 copy "%~dp0..\复制且输出puml\tree2puml.bat" "C:\Program Files\Tree This Folder\tree2puml.bat"
 copy "%~dp0..\复制且输出puml\tree2puml.exe" "C:\Program Files\Tree This Folder\tree2puml.exe"
 copy "%~dp0..\复制且输出tree\treetree.bat" "C:\Program Files\Tree This Folder\treetree.bat"
-copy "%~dp0remove_treeMDorTXTorPUML.bat" "C:\Program Files\Tree This Folder\remove_treeMDorTXTorPUML.bat"
+copy "%~dp0remove_treeMDorTXTorPUMLorTREE.bat" "C:\Program Files\Tree This Folder\remove_treeMDorTXTorPUMLorTREE.bat"
 :: 在文件夹背景中添加右键菜单项
 reg import "%~dp0生成文件夹结构_目录.reg"
 reg import "%~dp0生成txt_子项.reg"
