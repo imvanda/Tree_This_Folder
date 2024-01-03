@@ -1,14 +1,24 @@
 # -*- coding: utf-8 -*-
+import ctypes
 import os
 import subprocess
 
-
+def is_admin():
+    """检查用户是否具有管理员权限"""
+    try:
+        return ctypes.windll.shell32.IsUserAnAdmin()
+    except:
+        return False
 def run_as_admin(command):
     "需要vac"
     subprocess.run(["powershell", "Start-Process", command, "-Verb", "RunAs"], shell=True)
 
 
 def main():
+    if not is_admin():
+        print("错误：此程序需要以管理员权限运行。请以管理员身份重启程序。")
+        input("按任意键退出...")
+        return
     while True:
         # 显示菜单
         print("---------------------")
