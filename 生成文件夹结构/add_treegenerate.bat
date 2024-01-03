@@ -12,6 +12,8 @@ copy "%~dp0..\binary\treemd.exe" "C:\Program Files\Tree This Folder\treemd.exe"
 copy "%~dp0tree2puml.bat" "C:\Program Files\Tree This Folder\tree2puml.bat"
 copy "%~dp0..\binary\tree2puml.exe" "C:\Program Files\Tree This Folder\tree2puml.exe"
 copy "%~dp0treetree.bat" "C:\Program Files\Tree This Folder\treetree.bat"
+copy "%~dp0treeseedir.bat" "C:\Program Files\Tree This Folder\treeseedir.bat"
+copy "%~dp0..\binary\treeseedir.exe" "C:\Program Files\Tree This Folder\treeseedir.exe"
 copy "%~dp0remove_treegenerate.bat" "C:\Program Files\Tree This Folder\remove_treegenerate.bat"
 :: 在文件夹背景中添加右键菜单项
 reg import "%~dp0treegenerate.reg"

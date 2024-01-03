@@ -17,6 +17,8 @@ del /s /q "C:\Program Files\Tree This Folder\treetxt.bat"
 del /s /q "C:\Program Files\Tree This Folder\tree2puml.bat"
 del /s /q "C:\Program Files\Tree This Folder\tree2puml.exe"
 del /s /q "C:\Program Files\Tree This Folder\treetree.bat"
+del /s /q "C:\Program Files\Tree This Folder\treeseedir.bat"
+del /s /q "C:\Program Files\Tree This Folder\treeseedir.exe"
 del /s /q "C:\Program Files\Tree This Folder\remove_treegenerate.bat"
 pause
 ENDLOCAL
