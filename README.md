@@ -8,14 +8,18 @@
 
 # ➕ 添加方法：
 
-## 运行 `点我.bat`，根据提示输入选项 1 或 2。
+## 方法 1. 运行 `点我.bat`，根据提示输入选项 1 或 2。
 
 注意，需同意批处理运行时的 🛡️**管理员权限**UAC 授权。
 
 ![点我.bat预览](assets/点我.bat预览.png)
-## 运行 `Tree This Folder.exe`,根据提示输入选项 1 或 2。
+
+## 方法 2. 运行 `Tree This Folder.exe`,根据提示输入选项 1 或 2。
+
 注意，需同意程序运行时的 🛡️**管理员权限**UAC 授权。
+
 ![Tree This Folder 预览.png](assets/Tree This Folder 预览.png)
+
 ---
 
 # 🗑️ 移除方法：
@@ -26,8 +30,12 @@
 
 ## 方法 2. 如果添加后已删除文件，可使用 🛡️**管理员权限** 运行 📁`C:\Program Files\Tree This Folder` 文件夹 下的 `remove_treejustcopy.bat` 或 `remove_treegenerate.bat`手动移除。
 
-## 方法3. 运行 `Tree This Folder.exe`,根据提示输入选项 1 或 2。
+## 方法 3. 运行 `Tree This Folder.exe`,根据提示输入选项 1 或 2。
+
 注意，需同意程序运行时的 🛡️**管理员权限**UAC 授权。
+
+---
+
 # ✨ 实现效果如图：
 
 1. 右键菜单效果图
@@ -36,7 +44,7 @@
 
 右键菜单效果图功能解释：
 
-    1. 生成文件夹结构，通过子菜单选择生成 txt、md、puml还是Windows默认tree 文件，且内容会自动复制到剪贴板；
+    1. 生成文件夹结构，通过子菜单选择生成 txt、md、puml、Windows默认tree 文件 还是Emoji美化的tree✨ 文件，且内容会自动复制到剪贴板；
 
     2. 复制文件夹结构，仅复制到剪贴板，不生成文件；
 
@@ -66,9 +74,16 @@
 
 8. 输出 Windows 默认 tree 效果
 
-![输出tree效果](assets/输出tree效果.png)
+## ![输出tree效果](assets/输出tree效果.png)
+
+9. 输出 tree✨ 效果 （Powered By [seedir](https://github.com/earnestt1234/seedir) ）
+
+![输出tree✨效果](assets/输出tree✨效果.png)
+
 ---
+
 # 如何打包:
+
 ```bash
 # 在当前python环境安装pyinstaller
 pip install pyinstaller
