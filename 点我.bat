@@ -17,9 +17,9 @@ if "%choice%"=="0" (
 ) else if "%choice%"=="1" (
     Net session >nul 2>&1 || powershell start-process 复制文件夹结构\add_treejustcopy.bat -verb runas
 ) else if "%choice%"=="2" (
-        Net session >nul 2>&1 || powershell start-process 复制文件夹结构\remove_treejustcopy.bat -verb runas
-) else if "%choice%"=="3" (
     Net session >nul 2>&1 || powershell start-process 生成文件夹结构\add_treegenerate.bat -verb runas
+) else if "%choice%"=="3" (
+    Net session >nul 2>&1 || powershell start-process 复制文件夹结构\remove_treejustcopy.bat -verb runas
 ) else if "%choice%"=="4" (
     Net session >nul 2>&1 || powershell start-process 生成文件夹结构\remove_treegenerate.bat -verb runas
 ) else (
