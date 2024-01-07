@@ -28,7 +28,7 @@
 
 ## 方法 2. 如果添加后已删除文件，可使用 🛡️**管理员权限** 运行 📁`C:\Program Files\Tree This Folder` 文件夹 下的 `remove_treejustcopy.bat` 或 `remove_treegenerate.bat`手动移除。
 
-## 方法 3. 运行 `Tree This Folder.exe`,根据提示输入选项 1 或 2。
+## 方法 3. 运行 `Tree This Folder.exe`,根据提示输入选项 3 或 4。
 
 注意，需同意程序运行时的 🛡️**管理员权限**UAC 授权。
 
@@ -46,9 +46,9 @@
 
     2. 复制文件夹结构，仅复制到剪贴板，不生成文件；
 
-2. 输出 txt 效果
+2. 输出效果
 
-![输出txt效果](assets/%E8%BE%93%E5%87%BAtxt%E6%95%88%E6%9E%9C.png)
+![输出效果](assets/输出效果.gif)
 
 3. txt 导入 ChatGPT 效果：
 
