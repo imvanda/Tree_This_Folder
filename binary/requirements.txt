@@ -1,0 +1,4 @@
+pyperclip
+hashlib
+seedir
+emoji
