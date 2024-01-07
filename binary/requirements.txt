@@ -1,4 +1,4 @@
+pyinstaller
 pyperclip
-hashlib
 seedir
 emoji

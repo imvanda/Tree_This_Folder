@@ -6,15 +6,57 @@ def my_style(item):
     outdict = {}
     # get the extension
     ext = os.path.splitext(item)[1]
-    if ext in ('.txt', '.md', '.doc'):
-        outdict['filestart'] = '✏️'
-    elif ext in ('.png', '.jpg', '.gif'):
-        outdict['filestart'] = '🖼️'
-    elif ext == '.mp3':
-        outdict['filestart'] = '🎵'
+    file_types = {
+        'text': ('.txt', '.md', '.json', '.log', '.ini', '.cfg'),
+        'image': ('.png', '.jpg', '.gif', '.bmp', '.tif', '.svg', '.eps', '.psd', '.tiff', '.raw', '.indd', '.ai', '.xcf', '.sketch', '.skp', '.jpeg', '.jfif', '.exif', '.cr2', '.svgz', '.ico', '.jng', '.bmp', '.ps', '.pnm', '.pcx', '.djvu', '.webp', '.tga', '.svgz'),
+        'audio': ('.mp3', '.aac', '.ogg', '.wma', '.m4a', '.midi', '.opus', '.flac', '.wav', '.ape', '.alac', '.wv', '.aa', '.m4p', '.au', '.aiff', '.ra', '.snd', '.amr', '.aacp', '.mka', '.dsd', '.gsm', '.iklax', '.it', '.kar', '.m3u', '.m3u8', '.m4b', '.mid', '.mod', '.msv', '.oga'),
+        'video': ('.avi', '.mov', '.wmv', '.mp4', '.mkv', '.flv', '.3gp', '.webm', '.rm', '.swf', '.vob', '.ogv', '.drc', '.gifv', '.mng', '.qt', '.yuv', '.rmvb', '.asf', '.m4v', '.m2v', '.svi', '.f4v', '.vob'),
+        'archive': ('.rar', '.zip', '.tar', '.gz', '.7z', '.pkg', '.deb', '.rpm', '.arj', '.z', '.iso', '.lz', '.lzh', '.lzma', '.cab', '.chm', '.wim', '.dmg', '.efi', '.img', '.egg', '.alz', '.s7z', '.sitx', '.xz'),
+        'document': ('.doc', '.docx', '.docm', '.dot', '.dotx', '.dotm', '.odf', '.rtf', '.wpd', '.msg', '.eml', '.pst', '.ost', '.mbox', '.emlx', '.mht', '.mhtml', '.html', '.xps', '.oxps', '.pdf' '.odt', '.yaml', '.xml', '.tex', '.yml', '.sql', '.java', '.py', '.c', '.cpp', '.h', '.hpp', '.js', '.css', '.php', '.rb', '.pl', '.asm'),
+        'executable': ('.exe', '.dll', '.com', '.bat', '.cmd', '.msi', '.app', '.vb', '.vbs', '.vbe', '.js', '.jse', '.wsf', '.wsh', '.ps1', '.psm1', '.psd1', '.psc1', '.pssc', '.sh', '.bash', '.csh', '.tcsh', '.ksh', '.zsh'),
+        'spreadsheet': ('.csv', '.tsv', '.xls', '.xlsx', '.xlsm', '.xltx', '.xltm', '.xlsb', '.xlam', '.ods', '.prn', '.dif', '.sdc', '.dbf'),
+        'presentation': ('.ppt', '.pptx', '.pot', '.potx', '.potm', '.pps', '.ppsx', '.ppsm', '.odp'),
+        'miscellaneous': ('.nfo', '.inf')
+    }
+
+    file_emojis = {
+        'text': '✏️',
+        'image': '🖼️',
+        'audio': '🎵',
+        'video': '🎥',
+        'archive': '🗃️',
+        'document': '📜',
+        'executable': '🛠️',
+        'spreadsheet': '📊',
+        'presentation': '📽️',
+        'miscellaneous': '📃'
+    }
+
+    file_type = None
+
+    for file_category, extensions in file_types.items():
+        if ext in extensions:
+            file_type = file_category
+            break
+
+    if file_type:
+        outdict['filestart'] = file_emojis[file_type]
     else:
-    # 如果都不匹配的情况
-        outdict['filestart'] = '📄'
+        outdict['filestart'] = '📄'  # Default emoji for unknown file type
+
+
+    file_type = None
+
+    for file_category, extensions in file_types.items():
+        if ext in extensions:
+            file_type = file_category
+            break
+
+    if file_type:
+        outdict['filestart'] = file_emojis[file_type]
+    else:
+        outdict['filestart'] = '📄'  # Default emoji for unknown file type
+
 
     parent = os.path.basename(os.path.dirname(item))
     if parent == 'assets':
