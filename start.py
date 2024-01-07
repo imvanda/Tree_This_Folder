@@ -19,6 +19,10 @@ def main():
         print("错误：此程序需要以管理员权限运行。请以管理员身份重启程序。")
         input("按任意键退出...")
         return
+    if getattr(sys, 'frozen', None):
+        basedir = sys._MEIPASS
+    else:
+        basedir = os.path.dirname(__file__)
     while True:
         # 显示菜单
         print("---------------------")
@@ -35,17 +39,16 @@ def main():
             print("退出循环")
             break
         elif choice == "1":
-            run_as_admin("..\\复制文件夹结构\\add_treejustcopy.bat")
+            run_as_admin(basedir + "\\复制文件夹结构\\add_treejustcopy.bat")
         elif choice == "2":
-            run_as_admin("..\\生成文件夹结构\\add_treegenerate.bat")
+            run_as_admin(basedir + "\\生成文件夹结构\\add_treegenerate.bat")
         elif choice == "3":
-            run_as_admin("..\\复制文件夹结构\\remove_treejustcopy.bat")
+            run_as_admin(basedir + "\\复制文件夹结构\\remove_treejustcopy.bat")
         elif choice == "4":
-            run_as_admin("..\\生成文件夹结构\\remove_treegenerate.bat")
+            run_as_admin(basedir + "\\生成文件夹结构\\remove_treegenerate.bat")
         else:
             print("无效的选项，请重新输入。")
 
-        input("按任意键继续...")
         os.system('cls')  # 清除屏幕
 
 

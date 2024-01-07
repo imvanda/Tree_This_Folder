@@ -1,4 +1,9 @@
 # -*- mode: python ; coding: utf-8 -*-
+from PyInstaller.utils.hooks import collect_data_files
+
+datas = []
+datas += collect_data_files('seedir')
+
 block_cipher = None
 
 a = Analysis(['start.py'],
@@ -36,4 +41,5 @@ exe = EXE(pyz,
           upx_exclude=[],
           runtime_tmpdir=None,
           console=True,
+          uac_admin=True,
           icon='复制文件夹结构/treejustcopy.ico')# 指定应用程序图标
