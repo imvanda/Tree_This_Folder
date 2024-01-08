@@ -1,56 +1,101 @@
-# -*- coding: utf-8 -*-
+import sys
 import ctypes
 import os
 import subprocess
+from PyQt6.QtWidgets import (QWidget, QApplication)
+from PyQt6 import QtCore, QtGui, QtWidgets
 
-def is_admin():
-    """检查用户是否具有管理员权限"""
-    try:
-        return ctypes.windll.shell32.IsUserAnAdmin()
-    except:
-        return False
+if getattr(sys, 'frozen', None):
+    basedir = sys._MEIPASS
+else:
+    basedir = os.path.dirname(__file__)
+
 def run_as_admin(command):
     "需要vac"
     subprocess.run(["powershell", "Start-Process", command, "-Verb", "RunAs"], shell=True)
 
+def fun1():
+        run_as_admin(basedir + "\\复制文件夹结构\\add_treejustcopy.bat")
+
+def fun2():
+        run_as_admin(basedir + "\\生成文件夹结构\\add_treegenerate.bat")
+
+def fun3():
+        run_as_admin(basedir + "\\复制文件夹结构\\remove_treejustcopy.bat")
+
+def fun4():
+        run_as_admin(basedir + "\\生成文件夹结构\\remove_treegenerate.bat")
+
+class Ui_Tree_This_Folder(QWidget):
+    def setupUi(self, Tree_This_Folder):
+        Tree_This_Folder.setObjectName("Tree_This_Folder")
+        Tree_This_Folder.resize(303, 257)
+        Tree_This_Folder.setMinimumSize(QtCore.QSize(303, 257))
+        Tree_This_Folder.setMaximumSize(QtCore.QSize(303, 257))
+        font = QtGui.QFont()
+        font.setFamily("微软雅黑")
+        font.setPointSize(12)
+        Tree_This_Folder.setFont(font)
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap("c:\\Users\\sudoo\\Documents\\Tree_This_Folder\\生成文件夹结构/TreeThisFolder.ico"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        Tree_This_Folder.setWindowIcon(icon)
+        Tree_This_Folder.setLocale(QtCore.QLocale(QtCore.QLocale.Language.Chinese, QtCore.QLocale.Country.China))
+        self.pushButton_1 = QtWidgets.QPushButton(parent=Tree_This_Folder)
+        self.pushButton_1.setGeometry(QtCore.QRect(0, 10, 301, 51))
+        font = QtGui.QFont()
+        font.setFamily("微软雅黑")
+        font.setPointSize(12)
+        self.pushButton_1.setFont(font)
+        self.pushButton_1.setObjectName("pushButton_1")
+        self.pushButton_2 = QtWidgets.QPushButton(parent=Tree_This_Folder)
+        self.pushButton_2.setGeometry(QtCore.QRect(0, 70, 301, 51))
+        font = QtGui.QFont()
+        font.setFamily("微软雅黑")
+        font.setPointSize(12)
+        self.pushButton_2.setFont(font)
+        self.pushButton_2.setObjectName("pushButton_2")
+        self.pushButton_3 = QtWidgets.QPushButton(parent=Tree_This_Folder)
+        self.pushButton_3.setGeometry(QtCore.QRect(0, 130, 301, 51))
+        font = QtGui.QFont()
+        font.setFamily("微软雅黑")
+        font.setPointSize(12)
+        self.pushButton_3.setFont(font)
+        self.pushButton_3.setObjectName("pushButton_3")
+        self.pushButton_4 = QtWidgets.QPushButton(parent=Tree_This_Folder)
+        self.pushButton_4.setGeometry(QtCore.QRect(0, 190, 301, 51))
+        font = QtGui.QFont()
+        font.setFamily("微软雅黑")
+        font.setPointSize(12)
+        self.pushButton_4.setFont(font)
+        self.pushButton_4.setObjectName("pushButton_4")
+
+        self.retranslateUi(Tree_This_Folder)
+        QtCore.QMetaObject.connectSlotsByName(Tree_This_Folder)
+
+    def retranslateUi(self, Tree_This_Folder):
+        _translate = QtCore.QCoreApplication.translate
+        Tree_This_Folder.setWindowTitle(_translate("Tree_This_Folder", "Tree_This_Folder"))
+        self.pushButton_1.setText(_translate("Tree_This_Folder", "1. ➕添加 复制文件夹结构"))
+        self.pushButton_1.setShortcut(_translate("Tree_This_Folder", "1"))
+        self.pushButton_1.clicked.connect(fun1)
+        self.pushButton_2.setText(_translate("Tree_This_Folder", "2. ➕添加 生成文件夹结构"))
+        self.pushButton_2.setShortcut(_translate("Tree_This_Folder", "2"))
+        self.pushButton_2.clicked.connect(fun2)
+        self.pushButton_3.setText(_translate("Tree_This_Folder", "3. 🗑️移除 复制文件夹结构"))
+        self.pushButton_3.setShortcut(_translate("Tree_This_Folder", "3"))
+        self.pushButton_3.clicked.connect(fun3)
+        self.pushButton_4.setText(_translate("Tree_This_Folder", "4. 🗑️移除 生成文件夹结构"))
+        self.pushButton_4.setShortcut(_translate("Tree_This_Folder", "4"))
+        self.pushButton_4.clicked.connect(fun4)
+
 
 def main():
-    if not is_admin():
-        print("错误：此程序需要以管理员权限运行。请以管理员身份重启程序。")
-        input("按任意键退出...")
-        return
-    if getattr(sys, 'frozen', None):
-        basedir = sys._MEIPASS
-    else:
-        basedir = os.path.dirname(__file__)
-    while True:
-        # 显示菜单
-        print("---------------------")
-        print("1. 添加 复制文件夹结构")
-        print("2. 添加 生成文件夹结构")
-        print("3. 移除 复制文件夹结构")
-        print("4. 移除 生成文件夹结构")
-        print("0. 退出")
-        print("---------------------")
-
-        choice = input("请输入选项并按Enter键: ")
-
-        if choice == "0":
-            print("退出循环")
-            break
-        elif choice == "1":
-            run_as_admin(basedir + "\\复制文件夹结构\\add_treejustcopy.bat")
-        elif choice == "2":
-            run_as_admin(basedir + "\\生成文件夹结构\\add_treegenerate.bat")
-        elif choice == "3":
-            run_as_admin(basedir + "\\复制文件夹结构\\remove_treejustcopy.bat")
-        elif choice == "4":
-            run_as_admin(basedir + "\\生成文件夹结构\\remove_treegenerate.bat")
-        else:
-            print("无效的选项，请重新输入。")
-
-        os.system('cls')  # 清除屏幕
+    app = QApplication(sys.argv)
+    w = QWidget()
+    Ui_Tree_This_Folder().setupUi(w)
+    w.show()
+    sys.exit(app.exec())
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()
