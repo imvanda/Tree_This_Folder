@@ -40,6 +40,6 @@ exe = EXE(pyz,
           upx=True,
           upx_exclude=[],
           runtime_tmpdir=None,
-          console=True,
+          console=False,
           uac_admin=True,
           icon='复制文件夹结构/treejustcopy.ico')# 指定应用程序图标
