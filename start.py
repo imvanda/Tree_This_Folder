@@ -1,101 +1,86 @@
-import sys
-import ctypes
 import os
+import sys
 import subprocess
-from PyQt6.QtWidgets import (QWidget, QApplication)
-from PyQt6 import QtCore, QtGui, QtWidgets
+import tkinter as tk
+from tkinter import ttk
+
+def run_as_admin(command):
+    subprocess.run(["powershell", "Start-Process", command, "-Verb", "RunAs"], shell=True)
+
+def fun1():
+    run_as_admin(os.path.join(basedir, "复制文件夹结构", "add_treejustcopy.bat"))
+
+def fun2():
+    run_as_admin(os.path.join(basedir, "生成文件夹结构", "add_treegenerate.bat"))
+
+def fun3():
+    run_as_admin(os.path.join(basedir, "复制文件夹结构", "remove_treejustcopy.bat"))
+
+def fun4():
+    run_as_admin(os.path.join(basedir, "生成文件夹结构", "remove_treegenerate.bat"))
+
+class TreeThisFolderApp:
+    def __init__(self, root):
+        self.root = root
+        self.root.title("Tree_This_Folder")
+        self.root.geometry("303x257")
+        self.root.resizable(False, False)
+
+        self.create_widgets()
+
+    def create_widgets(self):
+        # Configure row and column weights to make buttons expand and center
+        self.root.grid_rowconfigure(0, weight=1)
+        self.root.grid_rowconfigure(1, weight=1)
+        self.root.grid_rowconfigure(2, weight=1)
+        self.root.grid_rowconfigure(3, weight=1)
+        self.root.grid_columnconfigure(0, weight=1)
+
+
+
+        button_width = 35  # Set the desired width for the buttons
+        button_height = 10  # Set the desired height for the buttons
+
+        # Create and define layout for each custom button style
+        ttk.Style().layout("Custom.TButton1", [("Button.highlight", {"children": [("Button.border", {"children": [("Button.padding", {"children": [("Button.label", {"side": "left", "sticky": ""})]})]})]})])
+        ttk.Style().layout("Custom.TButton2", [("Button.highlight", {"children": [("Button.border", {"children": [("Button.padding", {"children": [("Button.label", {"side": "left", "sticky": ""})]})]})]})])
+        ttk.Style().layout("Custom.TButton3", [("Button.highlight", {"children": [("Button.border", {"children": [("Button.padding", {"children": [("Button.label", {"side": "left", "sticky": ""})]})]})]})])
+        ttk.Style().layout("Custom.TButton4", [("Button.highlight", {"children": [("Button.border", {"children": [("Button.padding", {"children": [("Button.label", {"side": "left", "sticky": ""})]})]})]})])
+
+        # Button 1 with color #635994
+        ttk.Style().configure("Custom.TButton1", foreground="#635994", font=("Microsoft YaHei UI", 12))
+        self.button1 = ttk.Button(self.root, text="➕      添加 复制文件夹结构", command=fun1, width=button_width)
+        self.button1.grid(row=0, column=0, pady=0, padx=1, columnspan=3, sticky="nsew")
+        self.button1.configure(style="Custom.TButton1")
+
+        # Button 2 with color #635994
+        ttk.Style().configure("Custom.TButton2", foreground="#635994", font=("Microsoft YaHei UI", 12))
+        self.button2 = ttk.Button(self.root, text="➕      添加 生成文件夹结构", command=fun2, width=button_width)
+        self.button2.grid(row=1, column=0, pady=0, padx=1, columnspan=3, sticky="nsew")
+        self.button2.configure(style="Custom.TButton2")
+
+        # Button 3 with color #B0B0B0
+        ttk.Style().configure("Custom.TButton3", foreground="#B0B0B0", font=("Microsoft YaHei UI", 12))
+        self.button3 = ttk.Button(self.root, text="🗑️ 移除 复制文件夹结构", command=fun3, width=button_width)
+        self.button3.grid(row=2, column=0, pady=0, padx=1, columnspan=3, sticky="nsew")
+        self.button3.configure(style="Custom.TButton3")
+
+        # Button 4 with color #B0B0B0
+        ttk.Style().configure("Custom.TButton4", foreground="#B0B0B0", font=("Microsoft YaHei UI", 12))
+        self.button4 = ttk.Button(self.root, text="🗑️ 移除 生成文件夹结构", command=fun4, width=button_width)
+        self.button4.grid(row=3, column=0, pady=0, padx=1, columnspan=3, sticky="nsew")
+        self.button4.configure(style="Custom.TButton4")
 
 if getattr(sys, 'frozen', None):
     basedir = sys._MEIPASS
 else:
     basedir = os.path.dirname(__file__)
 
-def run_as_admin(command):
-    "需要vac"
-    subprocess.run(["powershell", "Start-Process", command, "-Verb", "RunAs"], shell=True)
-
-def fun1():
-        run_as_admin(basedir + "\\复制文件夹结构\\add_treejustcopy.bat")
-
-def fun2():
-        run_as_admin(basedir + "\\生成文件夹结构\\add_treegenerate.bat")
-
-def fun3():
-        run_as_admin(basedir + "\\复制文件夹结构\\remove_treejustcopy.bat")
-
-def fun4():
-        run_as_admin(basedir + "\\生成文件夹结构\\remove_treegenerate.bat")
-
-class Ui_Tree_This_Folder(QWidget):
-    def setupUi(self, Tree_This_Folder):
-        Tree_This_Folder.setObjectName("Tree_This_Folder")
-        Tree_This_Folder.resize(303, 257)
-        Tree_This_Folder.setMinimumSize(QtCore.QSize(303, 257))
-        Tree_This_Folder.setMaximumSize(QtCore.QSize(303, 257))
-        font = QtGui.QFont()
-        font.setFamily("微软雅黑")
-        font.setPointSize(12)
-        Tree_This_Folder.setFont(font)
-        icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("c:\\Users\\sudoo\\Documents\\Tree_This_Folder\\生成文件夹结构/TreeThisFolder.ico"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        Tree_This_Folder.setWindowIcon(icon)
-        Tree_This_Folder.setLocale(QtCore.QLocale(QtCore.QLocale.Language.Chinese, QtCore.QLocale.Country.China))
-        self.pushButton_1 = QtWidgets.QPushButton(parent=Tree_This_Folder)
-        self.pushButton_1.setGeometry(QtCore.QRect(0, 10, 301, 51))
-        font = QtGui.QFont()
-        font.setFamily("微软雅黑")
-        font.setPointSize(12)
-        self.pushButton_1.setFont(font)
-        self.pushButton_1.setObjectName("pushButton_1")
-        self.pushButton_2 = QtWidgets.QPushButton(parent=Tree_This_Folder)
-        self.pushButton_2.setGeometry(QtCore.QRect(0, 70, 301, 51))
-        font = QtGui.QFont()
-        font.setFamily("微软雅黑")
-        font.setPointSize(12)
-        self.pushButton_2.setFont(font)
-        self.pushButton_2.setObjectName("pushButton_2")
-        self.pushButton_3 = QtWidgets.QPushButton(parent=Tree_This_Folder)
-        self.pushButton_3.setGeometry(QtCore.QRect(0, 130, 301, 51))
-        font = QtGui.QFont()
-        font.setFamily("微软雅黑")
-        font.setPointSize(12)
-        self.pushButton_3.setFont(font)
-        self.pushButton_3.setObjectName("pushButton_3")
-        self.pushButton_4 = QtWidgets.QPushButton(parent=Tree_This_Folder)
-        self.pushButton_4.setGeometry(QtCore.QRect(0, 190, 301, 51))
-        font = QtGui.QFont()
-        font.setFamily("微软雅黑")
-        font.setPointSize(12)
-        self.pushButton_4.setFont(font)
-        self.pushButton_4.setObjectName("pushButton_4")
-
-        self.retranslateUi(Tree_This_Folder)
-        QtCore.QMetaObject.connectSlotsByName(Tree_This_Folder)
-
-    def retranslateUi(self, Tree_This_Folder):
-        _translate = QtCore.QCoreApplication.translate
-        Tree_This_Folder.setWindowTitle(_translate("Tree_This_Folder", "Tree_This_Folder"))
-        self.pushButton_1.setText(_translate("Tree_This_Folder", "1. ➕添加 复制文件夹结构"))
-        self.pushButton_1.setShortcut(_translate("Tree_This_Folder", "1"))
-        self.pushButton_1.clicked.connect(fun1)
-        self.pushButton_2.setText(_translate("Tree_This_Folder", "2. ➕添加 生成文件夹结构"))
-        self.pushButton_2.setShortcut(_translate("Tree_This_Folder", "2"))
-        self.pushButton_2.clicked.connect(fun2)
-        self.pushButton_3.setText(_translate("Tree_This_Folder", "3. 🗑️移除 复制文件夹结构"))
-        self.pushButton_3.setShortcut(_translate("Tree_This_Folder", "3"))
-        self.pushButton_3.clicked.connect(fun3)
-        self.pushButton_4.setText(_translate("Tree_This_Folder", "4. 🗑️移除 生成文件夹结构"))
-        self.pushButton_4.setShortcut(_translate("Tree_This_Folder", "4"))
-        self.pushButton_4.clicked.connect(fun4)
-
-
 def main():
-    app = QApplication(sys.argv)
-    w = QWidget()
-    Ui_Tree_This_Folder().setupUi(w)
-    w.show()
-    sys.exit(app.exec())
-
+    root = tk.Tk()
+    app = TreeThisFolderApp(root)
+    root.iconbitmap(default=os.path.join(basedir, "生成文件夹结构", "TreeThisFolder.ico"))
+    root.mainloop()
 
 if __name__ == '__main__':
     main()
