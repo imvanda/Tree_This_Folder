@@ -11,14 +11,25 @@ ping 127.0.0.1 -n 2 >nul
 echo 右键菜单项已删除。
 : 删除安装文件
 del /s /q "C:\Program Files\Tree This Folder\TreeThisFolder.ico"
-del /s /q "C:\Program Files\Tree This Folder\treemd.bat"
-del /s /q "C:\Program Files\Tree This Folder\treemd.exe"
+
 del /s /q "C:\Program Files\Tree This Folder\treetxt.bat"
+del /s /q "C:\Program Files\Tree This Folder\treemd.bat"
 del /s /q "C:\Program Files\Tree This Folder\tree2puml.bat"
-del /s /q "C:\Program Files\Tree This Folder\tree2puml.exe"
 del /s /q "C:\Program Files\Tree This Folder\treetree.bat"
 del /s /q "C:\Program Files\Tree This Folder\treeseedir.bat"
+
+del /s /q "C:\Program Files\Tree This Folder\treemd.exe"
+del /s /q "C:\Program Files\Tree This Folder\tree2puml.exe"
 del /s /q "C:\Program Files\Tree This Folder\treeseedir.exe"
+
+del /s /q "C:\Program Files\Tree This Folder\treemd.py"
+del /s /q "C:\Program Files\Tree This Folder\tree2puml.py"
+del /s /q "C:\Program Files\Tree This Folder\treeseedir.py"
+
+rd /s /q "C:\Program Files\Tree This Folder\runtime"
+
+rd /s /q "C:\Program Files\Tree This Folder\site-packages"
+
 del /s /q "C:\Program Files\Tree This Folder\remove_treegenerate.bat"
 pause
 ENDLOCAL
