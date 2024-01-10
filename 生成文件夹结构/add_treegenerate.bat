@@ -28,7 +28,7 @@ md "C:\Program Files\Tree This Folder\site-packages"
 xcopy /s /e /y "%~dp0..\site-packages\emoji\" "C:\Program Files\Tree This Folder\site-packages\emoji\"
 xcopy /s /e /y "%~dp0..\site-packages\natsort\" "C:\Program Files\Tree This Folder\site-packages\natsort\"
 xcopy /s /e /y "%~dp0..\site-packages\pyperclip\" "C:\Program Files\Tree This Folder\site-packages\pyperclip\"
-@REM xcopy /s /e /y "%~dp0..\site-packages\PyQt6\" "C:\Program Files\Tree This Folder\site-packages\PyQt6\"    不需要PyQt6
+:: xcopy /s /e /y "%~dp0..\site-packages\PyQt6\" "C:\Program Files\Tree This Folder\site-packages\PyQt6\"    不需要PyQt6
 xcopy /s /e /y "%~dp0..\site-packages\seedir\" "C:\Program Files\Tree This Folder\site-packages\seedir\"
 
 
