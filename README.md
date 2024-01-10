@@ -14,7 +14,7 @@
 
 ![点我.bat预览](assets/点我.bat预览.png)
 
-## 方法 2. 运行 `Tree This Folder.exe`,根据提示点击按钮或输入快捷键选项 1 或 2。
+## 方法 2. 运行 `start.exe`,根据提示点击按钮或输入快捷键选项 1 或 2。
 
 注意，需同意程序运行时的 🛡️**管理员权限**UAC 授权。
 
@@ -30,7 +30,7 @@
 
 ## 方法 2. 如果添加后已删除文件，可使用 🛡️**管理员权限** 运行 📁`C:\Program Files\Tree This Folder` 文件夹 下的 `remove_treejustcopy.bat` 或 `remove_treegenerate.bat`手动移除。
 
-## 方法 3. 运行 `Tree This Folder.exe`,根据提示点击按钮或输入快捷键选项 3 或 4。
+## 方法 3. 运行 `start.exe`,根据提示点击按钮或输入快捷键选项 3 或 4。
 
 注意，需同意程序运行时的 🛡️**管理员权限**UAC 授权。
 
