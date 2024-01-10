@@ -1,8 +1,8 @@
 # Tree_This_Folder
 
-## 为你的右键添加 复制、生成文件夹结构 功能。便于 ChatGPT / 你的同事 理解你的项目结构。使用 bat 脚本 和 Python 实现
+## 为你的右键添加 复制、生成文件夹结构 功能。便于 ChatGPT / 你的同事 理解你的项目结构。使用 bat 脚本 和 Python 实现，目前已支持 `生成 txt、markdown、puml、Windows默认tree、Emoji增强tree、json` 六种生成格式。
 
-## Add copy and generate folder structure for your right-click. Make it easy for ChatGPT/your colleagues to understand your project structure. Use bat script and Python implementation.
+## Add copy and generate folder structure for your right-click. Make it easy for ChatGPT/your colleagues to understand your project structure. Use bat script and Python implementation. Currently it supports six generation formats: TXT, Markdown, puml, Windows default tree, Emoji enhanced tree, and JSON.
 
 ---
 
@@ -50,6 +50,8 @@
 
 2. 输出效果
 
+注意，输出 json 时非常慢，请耐心等待。运行时无界面，但任务管理器是能看到没卡死的，不要多开。
+
 ![输出效果](assets/输出效果.gif)
 
 3. txt 导入 ChatGPT 效果：
@@ -79,6 +81,13 @@
 9. 输出 tree✨ 效果 （Powered By [seedir](https://github.com/earnestt1234/seedir) ）
 
 ![输出tree✨效果](assets/输出tree✨效果.png)
+
+10. 输出 json 效果 （Inspired By [tree_maker](https://github.com/flowese/tree_maker)）
+
+## ![输出json效果](assets/输出json效果.png)
+
+11. 注意，输出 json 时非常慢，请耐心等待。运行时无界面，但任务管理器是能看到没卡死的，不要多开。
+    ![输出json非常慢请耐心等待](assets/输出json非常慢请耐心等待.gif)
 
 ---
 
