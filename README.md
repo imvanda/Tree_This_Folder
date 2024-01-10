@@ -84,10 +84,62 @@
 
 # 如何打包:
 
-```bash
-# 在当前python环境安装pyinstaller
-pip install pyinstaller
-# 使用配置文件进行打包
-pyinstaller start.spec
+## 1. 📁runtime\
+
+下载[python-3.12.0-embed-amd64.zip](https://www.python.org/ftp/python/3.12.0/python-3.12.0-embed-amd64.zip)并解压，将解压后的`PyStand.exe`覆盖 `runtime\`
+
+## 2. 📁site-packages\
+
+[Anaconda](https://www.anaconda.com/) 新建 Python-3.12.0 环境`py312`，安装的第三方库
 
 ```
+emoji
+pyperclip
+PyQt6
+seedir
+```
+
+从`py312`环境`C:\ProgramData\anaconda3\envs\py312\Lib\site-packages`中复制第三方库到`site-packages\`
+
+```
+emoji
+natsort
+pyperclip
+PyQt6
+seedir
+```
+
+## 3. 🛠️start.exe
+
+下载 [
+PyStand-py312-pyqt6-lite.7z](https://github.com/H1DDENADM1N/PyStand/releases/download/1.1.2/PyStand-py312-pyqt6-lite.7z) 并解压，将解压后的`PyStand.exe`覆盖 `start.exe`
+
+或者，用 CMake 生成 PyStand.exe，注意，要用含 GetAdmin 版本的[`Pystand.cpp`](https://github.com/H1DDENADM1N/PyStand/blob/670bc8ec1b738ad02ac6691065b974dba509ad15/PyStand.cpp)
+
+```bash
+# 切换到与 Embedded Python 同版本环境
+conda activate py312
+# 安装依赖
+cmake -G"MinGW Makefiles" .
+# 编译
+cmake --build .
+```
+
+## 4. 📁binary\ 🛠️PyStand.exe
+
+下载 [PyStand-py312-pyqt6-x64.7z](https://github.com/H1DDENADM1N/PyStand/releases/download/1.1.2/PyStand-py312-pyqt6-x64.7z) 并解压，将解压后的`PyStand.exe`覆盖 `binary\PyStand.exe`
+
+或者，用 CMake 生成 PyStand.exe，注意，要用 `不` 含 GetAdmin 版本的[`Pystand.cpp`](https://github.com/skywind3000/PyStand/blob/master/PyStand.cpp)
+
+```bash
+# 切换到与 Embedded Python 同版本环境
+conda activate py312
+# 安装依赖
+cmake -G"MinGW Makefiles" .
+# 编译
+cmake --build .
+```
+
+## 5. 🗃️Tree_This_Folder**PyQt6**Portable.7z
+
+参考[Releases](https://github.com/H1DDENADM1N/Tree_This_Folder/releases)中的 7z 文件，仅压缩打包必须的文件
