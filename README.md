@@ -86,7 +86,7 @@
 
 ## 1. 📁runtime\
 
-下载[python-3.12.0-embed-amd64.zip](https://www.python.org/ftp/python/3.12.0/python-3.12.0-embed-amd64.zip)并解压，将解压后的`PyStand.exe`覆盖 `runtime\`
+下载[python-3.12.0-embed-amd64.zip](https://www.python.org/ftp/python/3.12.0/python-3.12.0-embed-amd64.zip)并解压，将解压后的文件覆盖 `runtime\`
 
 ## 2. 📁site-packages\
 
