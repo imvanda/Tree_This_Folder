@@ -50,7 +50,7 @@
 
 2. 输出效果
 
-注意，输出 json 时非常慢，请耐心等待。运行时无界面，但任务管理器是能看到没卡死的，不要多开。
+注意，输出 json 时非常慢，请耐心等待。运行时显示`The system cannot find the path specified.`请忽略，但任务管理器是能看到没卡死的，不要多开。
 
 ![输出效果](assets/输出效果.gif)
 
@@ -86,7 +86,7 @@
 
 ## ![输出json效果](assets/输出json效果.png)
 
-11. 注意，输出 json 时非常慢，请耐心等待。运行时无界面，但任务管理器是能看到没卡死的，不要多开。
+11. 注意，输出 json 时非常慢，请耐心等待。运行时显示`The system cannot find the path specified.`请忽略，但任务管理器是能看到没卡死的，不要多开。
     ![输出json非常慢请耐心等待](assets/输出json非常慢请耐心等待.gif)
 
 ---
