@@ -23,12 +23,10 @@ del /s /q "C:\Program Files\Tree This Folder\treetree.bat"
 del /s /q "C:\Program Files\Tree This Folder\treeseedir.bat"
 del /s /q "C:\Program Files\Tree This Folder\tree2json.bat"
 
-del /s /q "C:\Program Files\Tree This Folder\treemd.py"
-del /s /q "C:\Program Files\Tree This Folder\tree2puml.py"
-del /s /q "C:\Program Files\Tree This Folder\treeseedir.py"
-del /s /q "C:\Program Files\Tree This Folder\tree2json.py"
+rd /s /q "C:\Program Files\Tree This Folder\scrcpts\"
 
 rd /s /q "C:\Program Files\Tree This Folder\runtime"
+
 
 rd /s /q "C:\Program Files\Tree This Folder\site-packages"
 

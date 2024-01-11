@@ -134,21 +134,6 @@ cmake -G"MinGW Makefiles" .
 cmake --build .
 ```
 
-## 4. 📁binary\ 🛠️PyStand.exe
-
-下载 [PyStand-py312-pyqt6-x64.7z](https://github.com/H1DDENADM1N/PyStand/releases/download/1.1.2/PyStand-py312-pyqt6-x64.7z) 并解压，将解压后的`PyStand.exe`覆盖 `binary\PyStand.exe`
-
-或者，用 CMake 生成 PyStand.exe，注意，要用 `不` 含 GetAdmin 版本的[`Pystand.cpp`](https://github.com/skywind3000/PyStand/blob/master/PyStand.cpp)
-
-```bash
-# 切换到与 Embedded Python 同版本环境
-conda activate py312
-# 安装依赖
-cmake -G"MinGW Makefiles" .
-# 编译
-cmake --build .
-```
-
-## 5. 🗃️Tree_This_Folder**PyQt6**Portable.7z
+## 4. 🗃️Tree_This_Folder**PyQt6**Portable.7z
 
 参考[Releases](https://github.com/H1DDENADM1N/Tree_This_Folder/releases)中的 7z 文件，仅压缩打包必须的文件

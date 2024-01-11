@@ -14,10 +14,8 @@ copy "%~dp0treetree.bat" "C:\Program Files\Tree This Folder\treetree.bat"
 copy "%~dp0treeseedir.bat" "C:\Program Files\Tree This Folder\treeseedir.bat"
 copy "%~dp0tree2json.bat" "C:\Program Files\Tree This Folder\tree2json.bat"
 
-copy "%~dp0..\binary\treemd.py" "C:\Program Files\Tree This Folder\treemd.py"
-copy "%~dp0..\binary\tree2puml.py" "C:\Program Files\Tree This Folder\tree2puml.py"
-copy "%~dp0..\binary\treeseedir.py" "C:\Program Files\Tree This Folder\treeseedir.py"
-copy "%~dp0..\binary\tree2json.py" "C:\Program Files\Tree This Folder\tree2json.py"
+md "scripts"
+xcopy /s /e /y "%~dp0..\scrcpts\" "C:\Program Files\Tree This Folder\scrcpts\"
 
 md "C:\Program Files\Tree This Folder\runtime"
 xcopy /s /e /y "%~dp0..\runtime\" "C:\Program Files\Tree This Folder\runtime\"
