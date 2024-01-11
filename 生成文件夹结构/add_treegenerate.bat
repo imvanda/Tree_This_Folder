@@ -15,8 +15,8 @@ copy "%~dp0treetree.bat" "C:\Program Files\Tree This Folder\bats\treetree.bat"
 copy "%~dp0treeseedir.bat" "C:\Program Files\Tree This Folder\bats\treeseedir.bat"
 copy "%~dp0tree2json.bat" "C:\Program Files\Tree This Folder\bats\tree2json.bat"
 
-md "C:\Program Files\Tree This Folder\scrcpts\"
-xcopy /s /e /y "%~dp0..\scrcpts\" "C:\Program Files\Tree This Folder\scrcpts\"
+md "C:\Program Files\Tree This Folder\scripts\"
+xcopy /s /e /y "%~dp0..\scripts\" "C:\Program Files\Tree This Folder\scripts\"
 
 md "C:\Program Files\Tree This Folder\runtime"
 xcopy /s /e /y "%~dp0..\runtime\" "C:\Program Files\Tree This Folder\runtime\"

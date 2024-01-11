@@ -26,7 +26,7 @@ rd "C:\Program Files\Tree This Folder\bats\"
 :: 不要用 rd /s /q "C:\Program Files\Tree This Folder\bats\" ，防止把 复制文件夹结构 功能破坏
 
 
-rd /s /q "C:\Program Files\Tree This Folder\scrcpts\"
+rd /s /q "C:\Program Files\Tree This Folder\scripts\"
 
 rd /s /q "C:\Program Files\Tree This Folder\runtime"
 
