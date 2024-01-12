@@ -1,4 +1,0 @@
-pyinstaller
-pyperclip
-seedir
-emoji
