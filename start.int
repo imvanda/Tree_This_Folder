@@ -1,8 +1,8 @@
 import sys
 import os
 import subprocess
-from PyQt6.QtWidgets import (QWidget, QApplication)
-from PyQt6 import QtCore, QtGui, QtWidgets
+from PySide6.QtWidgets import (QWidget, QApplication)
+from PySide6 import QtCore, QtGui, QtWidgets
 
 if getattr(sys, 'frozen', None):
     basedir = sys._MEIPASS
