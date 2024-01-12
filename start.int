@@ -1,8 +1,17 @@
 import sys
 import os
 import subprocess
+
+from configparser import ConfigParser
+config = ConfigParser()
+
 from PySide6.QtWidgets import (QWidget, QApplication)
-from PySide6 import QtCore, QtGui, QtWidgets
+from Ui_Tree_This_Folder import Ui_Tree_This_Folder
+
+main_path = "C:\\Program Files\\Tree This Folder"
+config_file_path = os.path.join(main_path, "config.ini")
+treeignore_file_path = os.path.join(main_path, ".treeignore")
+
 
 if getattr(sys, 'frozen', None):
     basedir = sys._MEIPASS
@@ -14,84 +23,63 @@ def run_as_admin(command):
     subprocess.run(["powershell", "Start-Process", command, "-Verb", "RunAs"], shell=True)
 
 def fun1():
-        run_as_admin(basedir + "\\复制文件夹结构\\add_treejustcopy.bat")
+    run_as_admin(basedir + "\\复制文件夹结构\\add_treejustcopy.bat")
 
 def fun2():
-        run_as_admin(basedir + "\\生成文件夹结构\\add_treegenerate.bat")
+    run_as_admin(basedir + "\\生成文件夹结构\\add_treegenerate.bat")
 
 def fun3():
-        run_as_admin(basedir + "\\复制文件夹结构\\remove_treejustcopy.bat")
+    run_as_admin(basedir + "\\复制文件夹结构\\remove_treejustcopy.bat")
 
 def fun4():
-        run_as_admin(basedir + "\\生成文件夹结构\\remove_treegenerate.bat")
+    run_as_admin(basedir + "\\生成文件夹结构\\remove_treegenerate.bat")
 
-class Ui_Tree_This_Folder(QWidget):
-    def setupUi(self, Tree_This_Folder):
-        Tree_This_Folder.setObjectName("Tree_This_Folder")
-        Tree_This_Folder.resize(303, 257)
-        Tree_This_Folder.setMinimumSize(QtCore.QSize(303, 257))
-        Tree_This_Folder.setMaximumSize(QtCore.QSize(303, 257))
-        font = QtGui.QFont()
-        font.setFamily("微软雅黑")
-        font.setPointSize(12)
-        Tree_This_Folder.setFont(font)
-        icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("c:\\Users\\sudoo\\Documents\\Tree_This_Folder\\生成文件夹结构/TreeThisFolder.ico"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        Tree_This_Folder.setWindowIcon(icon)
-        Tree_This_Folder.setLocale(QtCore.QLocale(QtCore.QLocale.Language.Chinese, QtCore.QLocale.Country.China))
-        self.pushButton_1 = QtWidgets.QPushButton(parent=Tree_This_Folder)
-        self.pushButton_1.setGeometry(QtCore.QRect(0, 10, 301, 51))
-        font = QtGui.QFont()
-        font.setFamily("微软雅黑")
-        font.setPointSize(12)
-        self.pushButton_1.setFont(font)
-        self.pushButton_1.setObjectName("pushButton_1")
-        self.pushButton_2 = QtWidgets.QPushButton(parent=Tree_This_Folder)
-        self.pushButton_2.setGeometry(QtCore.QRect(0, 70, 301, 51))
-        font = QtGui.QFont()
-        font.setFamily("微软雅黑")
-        font.setPointSize(12)
-        self.pushButton_2.setFont(font)
-        self.pushButton_2.setObjectName("pushButton_2")
-        self.pushButton_3 = QtWidgets.QPushButton(parent=Tree_This_Folder)
-        self.pushButton_3.setGeometry(QtCore.QRect(0, 130, 301, 51))
-        font = QtGui.QFont()
-        font.setFamily("微软雅黑")
-        font.setPointSize(12)
-        self.pushButton_3.setFont(font)
-        self.pushButton_3.setObjectName("pushButton_3")
-        self.pushButton_4 = QtWidgets.QPushButton(parent=Tree_This_Folder)
-        self.pushButton_4.setGeometry(QtCore.QRect(0, 190, 301, 51))
-        font = QtGui.QFont()
-        font.setFamily("微软雅黑")
-        font.setPointSize(12)
-        self.pushButton_4.setFont(font)
-        self.pushButton_4.setObjectName("pushButton_4")
+def read_level_limit():
+    if os.path.exists(config_file_path):
+        global level_limit
+        config.read(config_file_path)
+        level_limit = int(config['DEFAULT']['level_limit'])
 
-        self.retranslateUi(Tree_This_Folder)
-        QtCore.QMetaObject.connectSlotsByName(Tree_This_Folder)
+def save_level_limit(value):
+    global level_limit
+    level_limit = value
 
-    def retranslateUi(self, Tree_This_Folder):
-        _translate = QtCore.QCoreApplication.translate
-        Tree_This_Folder.setWindowTitle(_translate("Tree_This_Folder", "Tree_This_Folder"))
-        self.pushButton_1.setText(_translate("Tree_This_Folder", "1. ➕添加 复制文件夹结构"))
-        self.pushButton_1.setShortcut(_translate("Tree_This_Folder", "1"))
+def set_level_limit(value):
+    global level_limit
+    config['DEFAULT']['level_limit'] = str(level_limit)
+    with open(config_file_path, 'w') as configfile:
+        config.write(configfile)
+    config.read(config_file_path, encoding='utf-8')
+    print('确定设置探索层级深度：', config['DEFAULT']['level_limit'])
+
+def edit_treeignore():
+    print('编辑排除项')
+    os.system("notepad.exe " + treeignore_file_path)
+
+def open_github():
+    print('打开GitHub')
+    os.system("start https://github.com/H1DDENADM1N/Tree_This_Folder")
+class Tree_This_Folder(QWidget, Ui_Tree_This_Folder):
+    def __init__(self):
+        super().__init__()
+        self.setupUi(self)
         self.pushButton_1.clicked.connect(fun1)
-        self.pushButton_2.setText(_translate("Tree_This_Folder", "2. ➕添加 生成文件夹结构"))
-        self.pushButton_2.setShortcut(_translate("Tree_This_Folder", "2"))
         self.pushButton_2.clicked.connect(fun2)
-        self.pushButton_3.setText(_translate("Tree_This_Folder", "3. 🗑️移除 复制文件夹结构"))
-        self.pushButton_3.setShortcut(_translate("Tree_This_Folder", "3"))
         self.pushButton_3.clicked.connect(fun3)
-        self.pushButton_4.setText(_translate("Tree_This_Folder", "4. 🗑️移除 生成文件夹结构"))
-        self.pushButton_4.setShortcut(_translate("Tree_This_Folder", "4"))
         self.pushButton_4.clicked.connect(fun4)
+        read_level_limit()
+        self.spinBox.setValue(level_limit)
+        self.spinBox.valueChanged.connect(save_level_limit)
+        self.pushButton_5.clicked.connect(set_level_limit)
+        self.pushButton_6.clicked.connect(edit_treeignore)
+        self.pushButton_7.clicked.connect(open_github)
 
 
 def main():
-    app = QApplication(sys.argv)
-    w = QWidget()
-    Ui_Tree_This_Folder().setupUi(w)
+    global level_limit
+    level_limit = 20
+    app = QApplication([])
+    w = Tree_This_Folder()
     w.show()
     sys.exit(app.exec())
 

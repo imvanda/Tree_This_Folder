@@ -15,6 +15,9 @@ copy "%~dp0treetree.bat" "C:\Program Files\Tree This Folder\bats\treetree.bat"
 copy "%~dp0treeseedir.bat" "C:\Program Files\Tree This Folder\bats\treeseedir.bat"
 copy "%~dp0tree2json.bat" "C:\Program Files\Tree This Folder\bats\tree2json.bat"
 
+copy "%~dp0..\config.ini" "C:\Program Files\Tree This Folder\config.ini"
+copy "%~dp0..\.treeignore" "C:\Program Files\Tree This Folder\.treeignore"
+
 md "C:\Program Files\Tree This Folder\scripts\"
 xcopy /s /e /y "%~dp0..\scripts\" "C:\Program Files\Tree This Folder\scripts\"
 
@@ -26,6 +29,8 @@ xcopy /s /e /y "%~dp0..\site-packages\emoji\" "C:\Program Files\Tree This Folder
 xcopy /s /e /y "%~dp0..\site-packages\natsort\" "C:\Program Files\Tree This Folder\site-packages\natsort\"
 xcopy /s /e /y "%~dp0..\site-packages\pyperclip\" "C:\Program Files\Tree This Folder\site-packages\pyperclip\"
 :: xcopy /s /e /y "%~dp0..\site-packages\PyQt6\" "C:\Program Files\Tree This Folder\site-packages\PyQt6\"    不需要PyQt6
+:: xcopy /s /e /y "%~dp0..\site-packages\PySide6\" "C:\Program Files\Tree This Folder\site-packages\PySide6\"    不需要PySide6
+:: xcopy /s /e /y "%~dp0..\site-packages\shiboken6\" "C:\Program Files\Tree This Folder\site-packages\shiboken6\"    不需要shiboken6
 xcopy /s /e /y "%~dp0..\site-packages\seedir\" "C:\Program Files\Tree This Folder\site-packages\seedir\"
 
 

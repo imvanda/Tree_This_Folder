@@ -25,6 +25,8 @@ del /s /q "C:\Program Files\Tree This Folder\bats\tree2json.bat"
 rd "C:\Program Files\Tree This Folder\bats\"
 :: 不要用 rd /s /q "C:\Program Files\Tree This Folder\bats\" ，防止把 复制文件夹结构 功能破坏
 
+del /s /q "C:\Program Files\Tree This Folder\config.ini"
+del /s /q "C:\Program Files\Tree This Folder\.treeignore"
 
 rd /s /q "C:\Program Files\Tree This Folder\scripts\"
 

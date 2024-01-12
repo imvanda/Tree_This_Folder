@@ -22,6 +22,38 @@
 
 ---
 
+# 🤓 高级用法：
+
+## 设置探索层级深度
+
+### 支持项：
+
+`生成文件夹结构` 中的 `txt` `md` `puml` `tree✨` `json`
+
+### 不支持项：
+
+`复制文件夹结构 和 `生成文件夹结构 中的 `tree`
+
+可通过 `start.exe` 设置，然后按确定生效。
+
+可手动修改 📁`C:\Program Files\Tree This Folder`文件夹下的 ✏️`config.ini`文件。
+
+## ~~设置排除项 .treeignone~~ 还没搞好 😂
+
+### 支持项：
+
+`无`
+
+### 不支持项：
+
+`全部`
+
+可通过 `start.exe` 点击`编辑`，编辑排除项。用法同 .gitignore
+
+可手动修改 📁`C:\Program Files\Tree This Folder`文件夹下的 ✏️`.treeignone`文件。
+
+---
+
 # 🗑️ 移除方法：
 
 ## 方法 1. 运行 `点我.bat`，根据提示输入选项 3 或 4。

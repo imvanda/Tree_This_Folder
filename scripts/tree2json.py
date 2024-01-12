@@ -5,6 +5,13 @@ import mimetypes
 import zlib
 import pyperclip
 
+from configparser import ConfigParser
+config = ConfigParser()
+
+main_path = "C:\\Program Files\\Tree This Folder"
+config_file_path = os.path.join(main_path, "config.ini")
+treeignore_file_path = os.path.join(main_path, ".treeignore")
+
 def read_file_content(file_path):
     mime_type, _ = mimetypes.guess_type(file_path)
 
@@ -22,8 +29,8 @@ def compress_content(content):
 def decompress_content(content):
     return zlib.decompress(base64.b64decode(content.encode("utf-8"))).decode("utf-8")
 
-def generate_tree(path):
-    if not os.path.exists(path):
+def generate_tree(path, level_limit=None, current_level=0):
+    if not os.path.exists(path) or (level_limit is not None and current_level > level_limit):
         return None
 
     tree = {"type": "directory", "name": os.path.basename(path), "children": []}
@@ -32,7 +39,7 @@ def generate_tree(path):
         element_path = os.path.join(path, element)
 
         if os.path.isdir(element_path):
-            tree["children"].append(generate_tree(element_path))
+            tree["children"].append(generate_tree(element_path, level_limit, current_level + 1))
         else:
             tree["children"].append({
                 "type": "file",
@@ -42,8 +49,8 @@ def generate_tree(path):
 
     return tree
 
-def save_tree_json(tree, output_file):
-    with open(output_file, "w", encoding='utf-8') as f:
+def save_tree_json(tree, output_file_name):
+    with open(output_file_name, "w", encoding='utf-8') as f:
         json.dump(tree, f, indent=2)
 
 def copy_txt_to_clipboard(file_path):
@@ -57,10 +64,24 @@ def copy_txt_to_clipboard(file_path):
     except Exception as e:
         print(f"发生错误：{e}")
 
-if __name__ == "__main__":
+def read_level_limit():
+    if os.path.exists(config_file_path):
+        global level_limit
+        config.read(config_file_path)
+        level_limit = int(config['DEFAULT']['level_limit'])
+
+def main():
+    # 获取当前文件夹路径和设置探索层级深度
     folder_path = os.getcwd()
-    output_file = os.path.split(folder_path)[-1] + ".json"
-    tree = generate_tree(folder_path)
-    print(f"Json文件 {output_file} 已生成。")
-    save_tree_json(tree, output_file)
-    copy_txt_to_clipboard(output_file)
+    global level_limit
+    level_limit = 20
+    read_level_limit()
+
+    output_file_name = os.path.split(folder_path)[-1] + ".json"
+    tree = generate_tree(folder_path, level_limit)
+    print(f"Json文件 {output_file_name} 已生成。")
+    save_tree_json(tree, output_file_name)
+    copy_txt_to_clipboard(output_file_name)
+
+if __name__ == "__main__":
+    main()

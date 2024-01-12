@@ -2,6 +2,13 @@ import os
 import pyperclip
 import seedir
 
+from configparser import ConfigParser
+config = ConfigParser()
+
+main_path = "C:\\Program Files\\Tree This Folder"
+config_file_path = os.path.join(main_path, "config.ini")
+treeignore_file_path = os.path.join(main_path, ".treeignore")
+
 def my_style(item):
     outdict = {}
     # get the extension
@@ -75,22 +82,28 @@ def copy_txt_to_clipboard(file_path):
     except Exception as e:
         print(f"发生错误：{e}")
 
+def read_level_limit():
+    if os.path.exists(config_file_path):
+        global level_limit
+        config.read(config_file_path)
+        level_limit = int(config['DEFAULT']['level_limit'])
 
 def main():
     # 获取当前文件夹路径和设置探索层级深度
     path = os.getcwd()
+    global level_limit
     level_limit = 20
+    read_level_limit()
 
     # 设置输出文件名
-    file_name = os.path.split(path)[-1] + '_seedir.txt'
+    output_file_name = os.path.split(path)[-1] + '_seedir.txt'
 
     content_str = seedir.seedir(path, style='emoji', printout=False, formatter=my_style, sticky_formatter=True, exclude_folders=['.git','.history'], depthlimit=level_limit)
     # 打开Txt文件并开始分析目录结构
-    with open(file_name, 'w', encoding='utf-8') as seedir_file:
+    with open(output_file_name, 'w', encoding='utf-8') as seedir_file:
         seedir_file.write(content_str)
-    print(f"seedir文件 {file_name} 已生成。")
-    txt_file_path = file_name
-    copy_txt_to_clipboard(txt_file_path)
+    print(f"seedir文件 {output_file_name} 已生成。")
+    copy_txt_to_clipboard(output_file_name)
 
 
 if __name__ == "__main__":
