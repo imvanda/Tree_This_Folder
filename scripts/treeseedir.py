@@ -8,6 +8,23 @@ config = ConfigParser()
 main_path = "C:\\Program Files\\Tree This Folder"
 config_file_path = os.path.join(main_path, "config.ini")
 treeignore_file_path = os.path.join(main_path, ".treeignore")
+local_treeignore_file_path = os.path.join(os.getcwd(), ".treeignore")
+
+def create_local_treeignore_file():
+    # 读取源文件内容
+    try:
+        with open(treeignore_file_path, 'r') as source_file:
+            content_to_add = source_file.read()
+
+        # 写入内容到新文件
+        with open(local_treeignore_file_path, 'a') as new_file:
+            new_file.write('\n' + content_to_add)
+
+        print(f'文件 {treeignore_file_path} 的内容已成功写入到 {local_treeignore_file_path}')
+    except FileNotFoundError:
+        print(f'找不到文件 {treeignore_file_path}')
+    except Exception as e:
+        print(f'发生错误: {e}')
 
 def my_style(item):
     outdict = {}
@@ -88,6 +105,24 @@ def read_level_limit():
         config.read(config_file_path)
         level_limit = int(config['DEFAULT']['level_limit'])
 
+def read_gitignore(file_path):
+    exclude_folders = []
+    exclude_files = []
+
+    with open(file_path, 'r') as file:
+        for line in file:
+            # 忽略注释和空行
+            if line.strip() and not line.strip().startswith('#'):
+                item = line.strip()
+                if item.endswith('/'):
+                    # 如果以斜杠结尾，则为文件夹
+                    exclude_folders.append(item.lstrip('/').rstrip('/'))
+                else:
+                    # 否则为文件
+                    exclude_files.append(item.lstrip('/'))
+
+    return exclude_folders, exclude_files
+
 def main():
     # 获取当前文件夹路径和设置探索层级深度
     path = os.getcwd()
@@ -97,8 +132,13 @@ def main():
 
     # 设置输出文件名
     output_file_name = os.path.split(path)[-1] + '_seedir.txt'
+    if not os.path.exists(local_treeignore_file_path):
+        create_local_treeignore_file()
 
-    content_str = seedir.seedir(path, style='emoji', printout=False, formatter=my_style, sticky_formatter=True, exclude_folders=['.git','.history'], depthlimit=level_limit)
+    exclude_folders, exclude_files = read_gitignore(local_treeignore_file_path)
+    print("排除的文件夹：", exclude_folders)
+    print("排除的文件：", exclude_files)
+    content_str = seedir.seedir(path, style='emoji', printout=False, formatter=my_style, sticky_formatter=True, exclude_folders=exclude_folders, exclude_files=exclude_files, depthlimit=level_limit)
     # 打开Txt文件并开始分析目录结构
     with open(output_file_name, 'w', encoding='utf-8') as seedir_file:
         seedir_file.write(content_str)

@@ -3,6 +3,8 @@ __pycache__/*
 *.pyo
 *.pyi
 
+/.git/
 /.gitignore
+/.treeignore
 /.history/
 /build/

@@ -32,7 +32,7 @@ xcopy /s /e /y "%~dp0..\site-packages\pyperclip\" "C:\Program Files\Tree This Fo
 :: xcopy /s /e /y "%~dp0..\site-packages\PySide6\" "C:\Program Files\Tree This Folder\site-packages\PySide6\"    不需要PySide6
 :: xcopy /s /e /y "%~dp0..\site-packages\shiboken6\" "C:\Program Files\Tree This Folder\site-packages\shiboken6\"    不需要shiboken6
 xcopy /s /e /y "%~dp0..\site-packages\seedir\" "C:\Program Files\Tree This Folder\site-packages\seedir\"
-
+copy "%~dp0..\site-packages\gitignore_parser.py" "C:\Program Files\Tree This Folder\site-packages\gitignore_parser.py"
 
 copy "%~dp0remove_treegenerate.bat" "C:\Program Files\Tree This Folder\remove_treegenerate.bat"
 :: 在文件夹背景中添加右键菜单项

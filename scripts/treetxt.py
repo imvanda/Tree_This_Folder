@@ -1,26 +1,58 @@
 import os
 import pyperclip
-
+from gitignore_parser import parse_gitignore
 from configparser import ConfigParser
 config = ConfigParser()
 
 main_path = "C:\\Program Files\\Tree This Folder"
 config_file_path = os.path.join(main_path, "config.ini")
 treeignore_file_path = os.path.join(main_path, ".treeignore")
+local_treeignore_file_path = os.path.join(os.getcwd(), ".treeignore")
+
+
+def create_local_treeignore_file():
+    # 读取源文件内容
+    try:
+        with open(treeignore_file_path, 'r') as source_file:
+            content_to_add = source_file.read()
+
+        # 写入内容到新文件
+        with open(local_treeignore_file_path, 'a') as new_file:
+            new_file.write('\n' + content_to_add)
+
+        print(f'文件 {treeignore_file_path} 的内容已成功写入到 {local_treeignore_file_path}')
+    except FileNotFoundError:
+        print(f'找不到文件 {treeignore_file_path}')
+    except Exception as e:
+        print(f'发生错误: {e}')
+
 
 def list_files_recursively(start_path, output_file, level_limit=None):
+    matches_gitignore = parse_gitignore(local_treeignore_file_path)
     with open(output_file, 'w', encoding='utf-8') as f:
         for root, dirs, files in os.walk(start_path):
-            current_level = root[len(start_path):].count(os.sep)  # 计算当前层级
+            current_level = root[len(start_path):].count(os.sep)
 
-            # 检查是否达到层级限制
             if level_limit is not None and current_level >= level_limit:
-                del dirs[:]  # 清空dirs以阻止os.walk进入下一级子目录
+                del dirs[:]
+                continue
+
+            # Check if the root matches any pattern in .gitignore
+            if matches_gitignore(os.path.relpath(root, start_path)):
+                print("Skipping:", root)
+                del dirs[:]
                 continue
 
             for file_or_dir in files + dirs:
                 abs_path = os.path.abspath(os.path.join(root, file_or_dir))
-                f.write(abs_path + '\n')
+
+                # Check if the file matches any pattern in .gitignore
+                if not matches_gitignore(os.path.relpath(abs_path, start_path)):
+                    f.write(abs_path + '\n')
+                else:
+                    print("Skipping:", abs_path)
+                    continue
+
 
 def copy_txt_to_clipboard(file_path):
     try:
@@ -40,16 +72,15 @@ def read_level_limit():
         level_limit = int(config['DEFAULT']['level_limit'])
 
 def main():
-    # 获取当前文件夹路径和设置探索层级深度
     path = os.getcwd()
     global level_limit
     level_limit = 20
     read_level_limit()
 
-    # 设置输出文件名
     output_file_name = 'Folder_Structure.txt'
+    if not os.path.exists(local_treeignore_file_path):
+        create_local_treeignore_file()
 
-    # 打开Txt文件并开始分析目录结构
     list_files_recursively(path, output_file_name, level_limit)
     copy_txt_to_clipboard(output_file_name)
 

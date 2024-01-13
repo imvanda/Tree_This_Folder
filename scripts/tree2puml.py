@@ -5,13 +5,30 @@ import sys
 import hashlib
 import pyperclip
 
-
+from gitignore_parser import parse_gitignore
 from configparser import ConfigParser
 config = ConfigParser()
 
 main_path = "C:\\Program Files\\Tree This Folder"
 config_file_path = os.path.join(main_path, "config.ini")
 treeignore_file_path = os.path.join(main_path, ".treeignore")
+local_treeignore_file_path = os.path.join(os.getcwd(), ".treeignore")
+
+def create_local_treeignore_file():
+    # 读取源文件内容
+    try:
+        with open(treeignore_file_path, 'r') as source_file:
+            content_to_add = source_file.read()
+
+        # 写入内容到新文件
+        with open(local_treeignore_file_path, 'a') as new_file:
+            new_file.write('\n' + content_to_add)
+
+        print(f'文件 {treeignore_file_path} 的内容已成功写入到 {local_treeignore_file_path}')
+    except FileNotFoundError:
+        print(f'找不到文件 {treeignore_file_path}')
+    except Exception as e:
+        print(f'发生错误: {e}')
 
 def clean_identifier(identifier):
     """Replace special characters with underscores in identifier."""
@@ -20,6 +37,7 @@ def clean_identifier(identifier):
 
 def generate_plantuml_content(base_path, current_path, level, level_limit):
     """Recursively generate PlantUML content from directory structure."""
+    matches_gitignore = parse_gitignore(local_treeignore_file_path)
     content_list = []
     dirs = sorted(os.listdir(current_path))
 
@@ -32,13 +50,18 @@ def generate_plantuml_content(base_path, current_path, level, level_limit):
         identifier = clean_identifier(relative_path)
 
         if os.path.isdir(sub_path) and level < level_limit:
-            content_list.append(f'package "{name}" as {identifier} {{\n')
-            content_list += generate_plantuml_content(base_path, sub_path, level + 1, level_limit)
-            content_list.append('}\n')
+            # Check if the file matches any pattern in .gitignore
+            if not matches_gitignore(name):
+                content_list.append(f'package "{name}" as {identifier} {{\n')
+                content_list += generate_plantuml_content(base_path, sub_path, level + 1, level_limit)
+                content_list.append('}\n')
 
-            if current_path != base_path:
-                parent_identifier = clean_identifier(os.path.relpath(current_path, base_path))
-                content_list.append(f"{parent_identifier} -- {identifier}\n")
+                if current_path != base_path:
+                    parent_identifier = clean_identifier(os.path.relpath(current_path, base_path))
+                    content_list.append(f"{parent_identifier} -- {identifier}\n")
+            else:
+                print("Skipping:", sub_path + "\n")
+                continue
 
     return content_list
 
@@ -67,9 +90,13 @@ def main():
     plantuml_content.append("@enduml\n")
     content_str = ''.join(plantuml_content)
     content_hash = calculate_content_hash(content_str)
+    
+    # 设置输出文件名
+    output_file_name = os.path.join(base_path, os.path.basename(os.path.normpath(base_path)) + '_' + content_hash + '.puml')
+    if not os.path.exists(local_treeignore_file_path):
+        create_local_treeignore_file()
 
-    output_file_name = os.path.join(base_path,
-                                    os.path.basename(os.path.normpath(base_path)) + '_' + content_hash + '.puml')
+
     print(f"Generating PlantUML file at: {output_file_name}")
 
     with open(output_file_name, 'w', encoding='utf-8') as plantuml_file:

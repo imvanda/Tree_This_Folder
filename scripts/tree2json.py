@@ -4,13 +4,30 @@ import base64
 import mimetypes
 import zlib
 import pyperclip
-
+from gitignore_parser import parse_gitignore
 from configparser import ConfigParser
 config = ConfigParser()
 
 main_path = "C:\\Program Files\\Tree This Folder"
 config_file_path = os.path.join(main_path, "config.ini")
 treeignore_file_path = os.path.join(main_path, ".treeignore")
+local_treeignore_file_path = os.path.join(os.getcwd(), ".treeignore")
+
+def create_local_treeignore_file():
+    # 读取源文件内容
+    try:
+        with open(treeignore_file_path, 'r') as source_file:
+            content_to_add = source_file.read()
+
+        # 写入内容到新文件
+        with open(local_treeignore_file_path, 'a') as new_file:
+            new_file.write('\n' + content_to_add)
+
+        print(f'文件 {treeignore_file_path} 的内容已成功写入到 {local_treeignore_file_path}')
+    except FileNotFoundError:
+        print(f'找不到文件 {treeignore_file_path}')
+    except Exception as e:
+        print(f'发生错误: {e}')
 
 def read_file_content(file_path):
     mime_type, _ = mimetypes.guess_type(file_path)
@@ -30,6 +47,7 @@ def decompress_content(content):
     return zlib.decompress(base64.b64decode(content.encode("utf-8"))).decode("utf-8")
 
 def generate_tree(path, level_limit=None, current_level=0):
+    matches_gitignore = parse_gitignore(local_treeignore_file_path)
     if not os.path.exists(path) or (level_limit is not None and current_level > level_limit):
         return None
 
@@ -38,14 +56,19 @@ def generate_tree(path, level_limit=None, current_level=0):
     for element in sorted(os.listdir(path)):
         element_path = os.path.join(path, element)
 
-        if os.path.isdir(element_path):
-            tree["children"].append(generate_tree(element_path, level_limit, current_level + 1))
+        # Check if the file matches any pattern in .gitignore
+        if not matches_gitignore(element):
+            if os.path.isdir(element_path):
+                tree["children"].append(generate_tree(element_path, level_limit, current_level + 1))
+            else:
+                tree["children"].append({
+                    "type": "file",
+                    "name": element,
+                    "content": compress_content(read_file_content(element_path))
+                })
         else:
-            tree["children"].append({
-                "type": "file",
-                "name": element,
-                "content": compress_content(read_file_content(element_path))
-            })
+            print("Skipping:", element_path + "\n")
+            continue
 
     return tree
 
@@ -77,7 +100,11 @@ def main():
     level_limit = 20
     read_level_limit()
 
+    # 设置输出文件名
     output_file_name = os.path.split(folder_path)[-1] + ".json"
+    if not os.path.exists(local_treeignore_file_path):
+        create_local_treeignore_file()
+
     tree = generate_tree(folder_path, level_limit)
     print(f"Json文件 {output_file_name} 已生成。")
     save_tree_json(tree, output_file_name)

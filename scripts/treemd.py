@@ -1,12 +1,29 @@
 import os
 import pyperclip
-
+from gitignore_parser import parse_gitignore
 from configparser import ConfigParser
 config = ConfigParser()
 
 main_path = "C:\\Program Files\\Tree This Folder"
 config_file_path = os.path.join(main_path, "config.ini")
 treeignore_file_path = os.path.join(main_path, ".treeignore")
+local_treeignore_file_path = os.path.join(os.getcwd(), ".treeignore")
+
+def create_local_treeignore_file():
+    # 读取源文件内容
+    try:
+        with open(treeignore_file_path, 'r') as source_file:
+            content_to_add = source_file.read()
+
+        # 写入内容到新文件
+        with open(local_treeignore_file_path, 'a') as new_file:
+            new_file.write('\n' + content_to_add)
+
+        print(f'文件 {treeignore_file_path} 的内容已成功写入到 {local_treeignore_file_path}')
+    except FileNotFoundError:
+        print(f'找不到文件 {treeignore_file_path}')
+    except Exception as e:
+        print(f'发生错误: {e}')
 
 def level_to_string(level):
     """
@@ -21,12 +38,20 @@ def analyze_directory(path, level, level_limit, mind_map_markdown):
     """
     分析目录结构并生成Markdown格式的思维导图
     """
+    matches_gitignore = parse_gitignore(local_treeignore_file_path)
     dirs = os.listdir(path)
     dirs.sort()
     for file in dirs:
         level_string = level_to_string(level)
         sub_path = os.path.join(path, file)
-        mind_map_markdown.write(level_string + file + "\n")
+        
+        # Check if the file matches any pattern in .gitignore
+        if not matches_gitignore(file):
+            mind_map_markdown.write(level_string + file + "\n")
+        else:
+            print("Skipping:", level_string + sub_path + "\n")
+            continue
+
         if os.path.isdir(sub_path) and level <= level_limit:
             sub_level = level + 1
             analyze_directory(sub_path, sub_level, level_limit, mind_map_markdown)
@@ -58,6 +83,8 @@ def main():
     # 设置初始层级和输出文件名
     level = 1
     output_file_name = os.path.split(path)[-1] + '.md'
+    if not os.path.exists(local_treeignore_file_path):
+        create_local_treeignore_file()
 
     # 打开Markdown文件并开始分析目录结构
     with open(output_file_name, 'w', encoding='utf-8') as mind_map_markdown:
