@@ -34,7 +34,7 @@
 
 `复制文件夹结构` 和 `生成文件夹结构` 中的 `tree`
 
-### 可通过 `start.exe` 设置，然后按确定生效。
+### 可通过 `start.exe` 设置，然后按确定生效，快捷键`S`
 
 ### 可手动修改 📁`C:\Program Files\Tree This Folder`文件夹下的 ✏️`config.ini`文件。
 
@@ -52,7 +52,7 @@
 
 ### 可手动修改 📁`C:\Program Files\Tree This Folder`文件夹下的 ✏️`.treeignone`文件。这是默认设置，即当前文件夹没有 ✏️`.treeignone`文件时，会自动复制默认设置。
 
-### 可手动修改 📁 当前文件夹下的 ✏️`.treeignone`文件。
+### 可手动修改 📁 当前文件夹下的 ✏️`.treeignone`文件，快捷键`E`
 
 ---
 
