@@ -205,7 +205,7 @@ cmake --build .
 │ ├─📁 natsort/    seedir依赖
 │ ├─📁 pyperclip/    复制到剪贴板 https://pypi.org/project/pyperclip/
 │ ├─📁 seedir/     生成tree✨文件 https://github.com/earnestt1234/seedir
-├─🖼️treejustcopy.ico    生成文件夹结构的图标
-└─🖼️TreeThisFolder.ico    复制文件夹结构的图标
+├─🖼️treejustcopy.ico    复制文件夹结构的图标
+└─🖼️TreeThisFolder.ico    生成文件夹结构的图标
 
 ```
