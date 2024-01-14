@@ -85,8 +85,10 @@ def main():
     level_limit = 20
     read_level_limit()
 
+    # 设置初始层级，level = 0 探索层级深度为0时仅输出当前文件夹，不向下探索，我们取巧直接level_limit+1实现同样效果
+    level = 0
     plantuml_content = ["@startuml\n", "scale 103500 width\n", "scale 2200 height\n"]
-    plantuml_content += generate_plantuml_content(base_path, base_path, 0, level_limit)
+    plantuml_content += generate_plantuml_content(base_path, base_path, level, level_limit+1)
     plantuml_content.append("@enduml\n")
     content_str = ''.join(plantuml_content)
     content_hash = calculate_content_hash(content_str)

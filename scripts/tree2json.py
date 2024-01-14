@@ -100,12 +100,13 @@ def main():
     level_limit = 20
     read_level_limit()
 
-    # 设置输出文件名
+    # 设置初始层级和输出文件名 level = 1 探索层级深度为0时仅输出当前文件夹，不向下探索，我们取巧直接level_limit+1实现同样效果
+    level = 1
     output_file_name = os.path.split(folder_path)[-1] + ".json"
     if not os.path.exists(local_treeignore_file_path):
         create_local_treeignore_file()
 
-    tree = generate_tree(folder_path, level_limit)
+    tree = generate_tree(folder_path, level_limit+1)
     print(f"Json文件 {output_file_name} 已生成。")
     save_tree_json(tree, output_file_name)
     copy_txt_to_clipboard(output_file_name)

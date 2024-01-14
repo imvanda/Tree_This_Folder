@@ -27,13 +27,13 @@ def create_local_treeignore_file():
         print(f'发生错误: {e}')
 
 
-def list_files_recursively(start_path, output_file, level_limit=None):
+def list_files_recursively(start_path, output_file, level, level_limit):
     matches_gitignore = parse_gitignore(local_treeignore_file_path)
     with open(output_file, 'w', encoding='utf-8') as f:
         for root, dirs, files in os.walk(start_path):
-            current_level = root[len(start_path):].count(os.sep)
-
-            if level_limit is not None and current_level >= level_limit:
+            current_level = root[len(start_path):].count(os.sep) + level
+            print(f"Level: {current_level}")
+            if current_level > level_limit:
                 del dirs[:]
                 continue
 
@@ -76,12 +76,13 @@ def main():
     global level_limit
     level_limit = 20
     read_level_limit()
-
+    # 设置初始层级和输出文件名，level = 0 探索层级深度为0时仅输出当前文件夹，不向下探索
+    level = 0
     output_file_name = 'Folder_Structure.txt'
     if not os.path.exists(local_treeignore_file_path):
         create_local_treeignore_file()
 
-    list_files_recursively(path, output_file_name, level_limit)
+    list_files_recursively(path, output_file_name, level, level_limit)
     copy_txt_to_clipboard(output_file_name)
 
 if __name__ == '__main__':

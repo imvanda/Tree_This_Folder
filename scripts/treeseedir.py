@@ -130,7 +130,8 @@ def main():
     level_limit = 20
     read_level_limit()
 
-    # 设置输出文件名
+    # 设置初始层级和输出文件名 seedir未提供设置初始层级接口，level = 1 探索层级深度为0时仅输出当前文件夹，不向下探索，我们取巧直接depthlimit=level_limit+level实现同样效果
+    level = 1
     output_file_name = os.path.split(path)[-1] + '_seedir.txt'
     if not os.path.exists(local_treeignore_file_path):
         create_local_treeignore_file()
@@ -138,7 +139,7 @@ def main():
     exclude_folders, exclude_files = read_gitignore(local_treeignore_file_path)
     print("排除的文件夹：", exclude_folders)
     print("排除的文件：", exclude_files)
-    content_str = seedir.seedir(path, style='emoji', printout=False, formatter=my_style, sticky_formatter=True, exclude_folders=exclude_folders, exclude_files=exclude_files, depthlimit=level_limit)
+    content_str = seedir.seedir(path, style='emoji', printout=False, formatter=my_style, sticky_formatter=True, exclude_folders=exclude_folders, exclude_files=exclude_files, depthlimit=level_limit+level)
     # 打开Txt文件并开始分析目录结构
     with open(output_file_name, 'w', encoding='utf-8') as seedir_file:
         seedir_file.write(content_str)

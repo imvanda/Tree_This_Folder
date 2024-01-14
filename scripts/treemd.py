@@ -43,6 +43,7 @@ def analyze_directory(path, level, level_limit, mind_map_markdown):
     dirs.sort()
     for file in dirs:
         level_string = level_to_string(level)
+        print(f"Level: {level}")
         sub_path = os.path.join(path, file)
         
         # Check if the file matches any pattern in .gitignore
@@ -80,7 +81,7 @@ def main():
     level_limit = 20
     read_level_limit()
 
-    # 设置初始层级和输出文件名
+    # 设置初始层级和输出文件名，level = 1 探索层级深度为0时仅输出当前文件夹，不向下探索
     level = 1
     output_file_name = os.path.split(path)[-1] + '.md'
     if not os.path.exists(local_treeignore_file_path):
