@@ -172,3 +172,40 @@ cmake --build .
 ## 4. 🗃️Tree_This_Folder**PyQt6**Portable.7z
 
 参考[Releases](https://github.com/H1DDENADM1N/Tree_This_Folder/releases)中的 7z 文件，仅压缩打包必须的文件
+
+---
+
+# 安装后 目录结构
+
+```
+📁 C:\Program Files\Tree This Folder/
+├─📁 bats/    除移除功能外其他的批处理脚本
+│ ├─🛠️tree2json.bat    调用scripts\tree2json.py
+│ ├─🛠️tree2puml.bat    调用scripts\tree2puml.py
+│ ├─🛠️treejustcopy.bat    复制文件夹结构，不生成任何文件
+│ ├─🛠️treemd.bat    调用scripts\treemd.py
+│ ├─🛠️treeseedir.bat    调用scripts\treeseedir.py
+│ ├─🛠️treetree.bat    生成Windows默认tree文件 `目录名`.txt
+│ └─🛠️treetxt.bat    调用scripts\treetxt.py
+├─✏️.treeignore    配置文件 可设置排除项 用法参考[gitignore](https://git-scm.com/docs/gitignore)
+├─✏️config.ini    配置文件 可设置探索层级深度
+├─🛠️remove_treegenerate.bat    移除功能 生成文件夹结构
+├─🛠️remove_treejustcopy.bat    移除功能 复制文件夹结构
+├─📁 runtime/    Python3.12运行环境
+├─📁 scripts/    Python脚本
+│ ├─📜tests.py    调试工具 测试gitignore
+│ ├─📜tree2json.py    生成JSON文件 `目录名`.json
+│ ├─📜tree2puml.py    生成PUML文件 `目录名'_'六位hash'.puml
+│ ├─📜treemd.py    生成Markdown文件 `目录名`.md
+│ ├─📜treeseedir.py    生成emoji美化的tree✨文件 `目录名`_seedir.txt
+│ ├─📜treetxt.py    生成绝对路径表文件 Folder_Structure.txt
+├─📁 site-packages/    Python运行库
+│ ├─📁 emoji/    seedir依赖 https://pypi.org/project/emoji/
+│ ├─📜gitignore_parser.py    设置排除项 分析gitignore的规则 https://github.com/mherrmann/gitignore_parser
+│ ├─📁 natsort/    seedir依赖
+│ ├─📁 pyperclip/    复制到剪贴板 https://pypi.org/project/pyperclip/
+│ ├─📁 seedir/     生成tree✨文件 https://github.com/earnestt1234/seedir
+├─🖼️treejustcopy.ico    生成文件夹结构的图标
+└─🖼️TreeThisFolder.ico    复制文件夹结构的图标
+
+```
