@@ -209,3 +209,11 @@ cmake --build .
 └─🖼️TreeThisFolder.ico    生成文件夹结构的图标
 
 ```
+
+---
+
+# 资源引用
+
+## 程序图标来自 [Binary-tree-icon](https://www.iconarchive.com/show/flatastic-5-icons-by-custom-icon-design/Binary-tree-icon.html)
+
+![](生成文件夹结构/TreeThisFolder.ico)
