@@ -129,11 +129,15 @@
 
 ## 1. 📁runtime\
 
-下载[python-3.12.0-embed-amd64.zip](https://www.python.org/ftp/python/3.12.0/python-3.12.0-embed-amd64.zip)并解压，将解压后的文件覆盖 `runtime\`
+下载[python-3.13.11-embed-amd64.zip](https://www.python.org/ftp/python/3.13.11/python-3.13.11-embed-amd64.zip)并解压，将解压后的文件覆盖 `runtime\`
 
 ## 2. 📁site-packages\
 
-[Anaconda](https://www.anaconda.com/) 新建 Python-3.12.0 环境`py312`，安装的第三方库
+安装的第三方库
+
+```powershell
+uv sync
+```
 
 ```
 emoji
@@ -143,7 +147,7 @@ seedir
 gitignore_parser
 ```
 
-从`py312`环境`C:\ProgramData\anaconda3\envs\py312\Lib\site-packages`中复制第三方库到`site-packages\`
+从`.venv`环境中复制第三方库到`site-packages\`
 
 ```
 emoji
@@ -157,8 +161,7 @@ gitignore_parser
 
 ## 3. 🛠️start.exe
 
-下载 [
-PyStand-py312-pyqt6-lite.7z](https://github.com/H1DDENADM1N/PyStand/releases/download/1.1.2/PyStand-py312-pyqt6-lite.7z) 并解压，将解压后的`PyStand.exe`覆盖 `start.exe`
+下载 [PyStand_admin-Python3.13.11-PySide6.10.1-lite.7z](https://github.com/H1DDENADM1N/PyStand/releases) 并解压，将解压后的`PyStand.exe`覆盖 `start.exe`
 
 或者，用 CMake 生成 PyStand.exe，注意，要用含 GetAdmin 版本的[`Pystand.cpp`](https://github.com/H1DDENADM1N/PyStand/blob/670bc8ec1b738ad02ac6691065b974dba509ad15/PyStand.cpp)
 
