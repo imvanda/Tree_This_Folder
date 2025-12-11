@@ -22,6 +22,40 @@
 
 ---
 
+# 🤓 高级用法：
+
+## 设置探索层级深度
+
+### 支持项：
+
+`生成文件夹结构` 中的 `txt` `md` `puml` `tree✨` `json`
+
+### 不支持项：
+
+`复制文件夹结构` 和 `生成文件夹结构` 中的 `tree`
+
+### 可通过 `start.exe` 设置，然后按确定生效，快捷键`S`
+
+### 可手动修改 📁`C:\Program Files\Tree This Folder`文件夹下的 ✏️`config.ini`文件。
+
+## 设置排除项 .treeignone
+
+### 支持项：
+
+`生成文件夹结构` 中的 `txt` `md` `puml` `tree✨` `json`
+
+### 不支持项：
+
+`复制文件夹结构` 和 `生成文件夹结构` 中的 `tree`
+
+### 可通过 `start.exe` 点击`编辑`，编辑排除项。用法同 .gitignore，快捷键`E`
+
+### 可手动修改 📁`C:\Program Files\Tree This Folder`文件夹下的 ✏️`.treeignone`文件。这是默认设置，即当前文件夹没有 ✏️`.treeignone`文件时，会自动复制默认设置。
+
+### 可手动修改 📁 当前文件夹下的 ✏️`.treeignone`文件。
+
+---
+
 # 🗑️ 移除方法：
 
 ## 方法 1. 运行 `点我.bat`，根据提示输入选项 3 或 4。
@@ -50,7 +84,7 @@
 
 2. 输出效果
 
-注意，输出 json 时非常慢，请耐心等待。运行时无界面，但任务管理器是能看到没卡死的，不要多开。
+注意，输出 json 时非常慢，请耐心等待。运行时显示`The system cannot find the path specified.`请忽略，但任务管理器是能看到没卡死的，不要多开。
 
 ![输出效果](assets/输出效果.gif)
 
@@ -86,7 +120,7 @@
 
 ## ![输出json效果](assets/输出json效果.png)
 
-11. 注意，输出 json 时非常慢，请耐心等待。运行时无界面，但任务管理器是能看到没卡死的，不要多开。
+11. 注意，输出 json 时非常慢，请耐心等待。运行时显示`The system cannot find the path specified.`请忽略，但任务管理器是能看到没卡死的，不要多开。
     ![输出json非常慢请耐心等待](assets/输出json非常慢请耐心等待.gif)
 
 ---
@@ -95,60 +129,94 @@
 
 ## 1. 📁runtime\
 
-下载[python-3.12.0-embed-amd64.zip](https://www.python.org/ftp/python/3.12.0/python-3.12.0-embed-amd64.zip)并解压，将解压后的文件覆盖 `runtime\`
+下载[python-3.13.11-embed-amd64.zip](https://www.python.org/ftp/python/3.13.11/python-3.13.11-embed-amd64.zip)并解压，将解压后的文件覆盖 `runtime\`
 
 ## 2. 📁site-packages\
 
-[Anaconda](https://www.anaconda.com/) 新建 Python-3.12.0 环境`py312`，安装的第三方库
+安装的第三方库
+
+```powershell
+uv sync
+```
 
 ```
 emoji
 pyperclip
-PyQt6
+PySide6
 seedir
+gitignore_parser
 ```
 
-从`py312`环境`C:\ProgramData\anaconda3\envs\py312\Lib\site-packages`中复制第三方库到`site-packages\`
+从`.venv`环境中复制第三方库到`site-packages\`
 
 ```
 emoji
 natsort
 pyperclip
-PyQt6
+PySide6
 seedir
+shiboken6
+gitignore_parser
 ```
 
 ## 3. 🛠️start.exe
 
-下载 [
-PyStand-py312-pyqt6-lite.7z](https://github.com/H1DDENADM1N/PyStand/releases/download/1.1.2/PyStand-py312-pyqt6-lite.7z) 并解压，将解压后的`PyStand.exe`覆盖 `start.exe`
+下载 [PyStand_admin-Python3.13.11-PySide6.10.1-lite.7z](https://github.com/H1DDENADM1N/PyStand/releases) 并解压，将解压后的`PyStand.exe`覆盖 `start.exe`
 
 或者，用 CMake 生成 PyStand.exe，注意，要用含 GetAdmin 版本的[`Pystand.cpp`](https://github.com/H1DDENADM1N/PyStand/blob/670bc8ec1b738ad02ac6691065b974dba509ad15/PyStand.cpp)
 
 ```bash
-# 切换到与 Embedded Python 同版本环境
-conda activate py312
 # 安装依赖
 cmake -G"MinGW Makefiles" .
 # 编译
 cmake --build .
 ```
 
-## 4. 📁binary\ 🛠️PyStand.exe
-
-下载 [PyStand-py312-pyqt6-x64.7z](https://github.com/H1DDENADM1N/PyStand/releases/download/1.1.2/PyStand-py312-pyqt6-x64.7z) 并解压，将解压后的`PyStand.exe`覆盖 `binary\PyStand.exe`
-
-或者，用 CMake 生成 PyStand.exe，注意，要用 `不` 含 GetAdmin 版本的[`Pystand.cpp`](https://github.com/skywind3000/PyStand/blob/master/PyStand.cpp)
-
-```bash
-# 切换到与 Embedded Python 同版本环境
-conda activate py312
-# 安装依赖
-cmake -G"MinGW Makefiles" .
-# 编译
-cmake --build .
-```
-
-## 5. 🗃️Tree_This_Folder**PyQt6**Portable.7z
+## 4. 🗃️Tree_This_Folder**PyQt6**Portable.7z
 
 参考[Releases](https://github.com/H1DDENADM1N/Tree_This_Folder/releases)中的 7z 文件，仅压缩打包必须的文件
+
+---
+
+# 安装后 目录结构
+
+```
+📁 C:\Program Files\Tree This Folder/
+├─📁 bats/    除移除功能外其他的批处理脚本
+│ ├─🛠️tree2json.bat    调用scripts\tree2json.py
+│ ├─🛠️tree2puml.bat    调用scripts\tree2puml.py
+│ ├─🛠️treejustcopy.bat    复制文件夹结构，不生成任何文件
+│ ├─🛠️treemd.bat    调用scripts\treemd.py
+│ ├─🛠️treeseedir.bat    调用scripts\treeseedir.py
+│ ├─🛠️treetree.bat    生成Windows默认tree文件 `目录名`.txt
+│ └─🛠️treetxt.bat    调用scripts\treetxt.py
+├─✏️.treeignore    配置文件 可设置排除项 用法参考[gitignore](https://git-scm.com/docs/gitignore)
+├─✏️config.ini    配置文件 可设置探索层级深度
+├─🛠️remove_treegenerate.bat    移除功能 生成文件夹结构
+├─🛠️remove_treejustcopy.bat    移除功能 复制文件夹结构
+├─📁 runtime/    Python3.12运行环境
+├─📁 scripts/    Python脚本
+│ ├─📜tests.py    调试工具 测试gitignore
+│ ├─📜tree2json.py    生成JSON文件 `目录名`.json
+│ ├─📜tree2puml.py    生成PUML文件 `目录名'_'六位hash'.puml
+│ ├─📜treemd.py    生成Markdown文件 `目录名`.md
+│ ├─📜treeseedir.py    生成emoji美化的tree✨文件 `目录名`_seedir.txt
+│ ├─📜treetxt.py    生成绝对路径表文件 Folder_Structure.txt
+├─📁 site-packages/    Python运行库
+│ ├─📁 emoji/    seedir依赖 https://pypi.org/project/emoji/
+│ ├─📜gitignore_parser.py    设置排除项 分析gitignore的规则 https://github.com/mherrmann/gitignore_parser
+│ ├─📁 natsort/    seedir依赖
+│ ├─📁 pyperclip/    复制到剪贴板 https://pypi.org/project/pyperclip/
+│ ├─📁 seedir/     生成tree✨文件 https://github.com/earnestt1234/seedir
+├─🖼️treejustcopy.ico    复制文件夹结构的图标
+└─🖼️TreeThisFolder.ico    生成文件夹结构的图标
+
+```
+
+---
+
+# 资源引用
+
+## 程序图标来自 [Binary-tree-icon](https://www.iconarchive.com/show/flatastic-5-icons-by-custom-icon-design/Binary-tree-icon.html)
+
+![](生成文件夹结构/TreeThisFolder.ico)

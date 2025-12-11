@@ -1,4 +1,4 @@
 @echo off
 SETLOCAL EnableExtensions
 cd %V
-start "" "C:\Program Files\Tree This Folder\tree2puml.exe"
+call "C:\Program Files\Tree This Folder\runtime\python.exe" "C:\Program Files\Tree This Folder\scripts\tree2puml.py"

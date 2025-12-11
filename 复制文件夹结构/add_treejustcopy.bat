@@ -5,7 +5,10 @@ SETLOCAL EnableExtensions
 md "C:\Program Files\Tree This Folder"
 :: 复制文件到安装目录
 copy "%~dp0treejustcopy.ico" "C:\Program Files\Tree This Folder\treejustcopy.ico"
-copy "%~dp0treejustcopy.bat" "C:\Program Files\Tree This Folder\treejustcopy.bat"
+
+md "C:\Program Files\Tree This Folder\bats\"
+copy "%~dp0treejustcopy.bat" "C:\Program Files\Tree This Folder\bats\treejustcopy.bat"
+
 copy "%~dp0remove_treejustcopy.bat" "C:\Program Files\Tree This Folder\remove_treejustcopy.bat"
 :: 在文件夹背景中添加右键菜单项
 reg import "%~dp0treejustcopy.reg"

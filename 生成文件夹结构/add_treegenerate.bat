@@ -7,22 +7,19 @@ md "C:\Program Files\Tree This Folder"
 :: 复制文件到安装目录
 copy "%~dp0TreeThisFolder.ico" "C:\Program Files\Tree This Folder\TreeThisFolder.ico"
 
-copy "%~dp0treetxt.bat" "C:\Program Files\Tree This Folder\treetxt.bat"
-copy "%~dp0treemd.bat" "C:\Program Files\Tree This Folder\treemd.bat"
-copy "%~dp0tree2puml.bat" "C:\Program Files\Tree This Folder\tree2puml.bat"
-copy "%~dp0treetree.bat" "C:\Program Files\Tree This Folder\treetree.bat"
-copy "%~dp0treeseedir.bat" "C:\Program Files\Tree This Folder\treeseedir.bat"
-copy "%~dp0tree2json.bat" "C:\Program Files\Tree This Folder\tree2json.bat"
+md "C:\Program Files\Tree This Folder\bats\"
+copy "%~dp0treetxt.bat" "C:\Program Files\Tree This Folder\bats\treetxt.bat"
+copy "%~dp0treemd.bat" "C:\Program Files\Tree This Folder\bats\treemd.bat"
+copy "%~dp0tree2puml.bat" "C:\Program Files\Tree This Folder\bats\tree2puml.bat"
+copy "%~dp0treetree.bat" "C:\Program Files\Tree This Folder\bats\treetree.bat"
+copy "%~dp0treeseedir.bat" "C:\Program Files\Tree This Folder\bats\treeseedir.bat"
+copy "%~dp0tree2json.bat" "C:\Program Files\Tree This Folder\bats\tree2json.bat"
 
-copy "%~dp0..\binary\PyStand.exe" "C:\Program Files\Tree This Folder\treemd.exe"
-copy "%~dp0..\binary\PyStand.exe" "C:\Program Files\Tree This Folder\tree2puml.exe"
-copy "%~dp0..\binary\PyStand.exe" "C:\Program Files\Tree This Folder\treeseedir.exe"
-copy "%~dp0..\binary\PyStand.exe" "C:\Program Files\Tree This Folder\tree2json.exe"
+copy "%~dp0..\config.ini" "C:\Program Files\Tree This Folder\config.ini"
+copy "%~dp0..\.treeignore" "C:\Program Files\Tree This Folder\.treeignore"
 
-copy "%~dp0..\binary\treemd.py" "C:\Program Files\Tree This Folder\treemd.py"
-copy "%~dp0..\binary\tree2puml.py" "C:\Program Files\Tree This Folder\tree2puml.py"
-copy "%~dp0..\binary\treeseedir.py" "C:\Program Files\Tree This Folder\treeseedir.py"
-copy "%~dp0..\binary\tree2json.py" "C:\Program Files\Tree This Folder\tree2json.py"
+md "C:\Program Files\Tree This Folder\scripts\"
+xcopy /s /e /y "%~dp0..\scripts\" "C:\Program Files\Tree This Folder\scripts\"
 
 md "C:\Program Files\Tree This Folder\runtime"
 xcopy /s /e /y "%~dp0..\runtime\" "C:\Program Files\Tree This Folder\runtime\"
@@ -32,8 +29,10 @@ xcopy /s /e /y "%~dp0..\site-packages\emoji\" "C:\Program Files\Tree This Folder
 xcopy /s /e /y "%~dp0..\site-packages\natsort\" "C:\Program Files\Tree This Folder\site-packages\natsort\"
 xcopy /s /e /y "%~dp0..\site-packages\pyperclip\" "C:\Program Files\Tree This Folder\site-packages\pyperclip\"
 :: xcopy /s /e /y "%~dp0..\site-packages\PyQt6\" "C:\Program Files\Tree This Folder\site-packages\PyQt6\"    不需要PyQt6
+:: xcopy /s /e /y "%~dp0..\site-packages\PySide6\" "C:\Program Files\Tree This Folder\site-packages\PySide6\"    不需要PySide6
+:: xcopy /s /e /y "%~dp0..\site-packages\shiboken6\" "C:\Program Files\Tree This Folder\site-packages\shiboken6\"    不需要shiboken6
 xcopy /s /e /y "%~dp0..\site-packages\seedir\" "C:\Program Files\Tree This Folder\site-packages\seedir\"
-
+copy "%~dp0..\site-packages\gitignore_parser.py" "C:\Program Files\Tree This Folder\site-packages\gitignore_parser.py"
 
 copy "%~dp0remove_treegenerate.bat" "C:\Program Files\Tree This Folder\remove_treegenerate.bat"
 :: 在文件夹背景中添加右键菜单项

@@ -1,4 +1,4 @@
 @echo off
+SETLOCAL EnableExtensions
 cd %V
-dir /s /b > Folder_Structure.txt
-type Folder_Structure.txt | clip
+call "C:\Program Files\Tree This Folder\runtime\python.exe" "C:\Program Files\Tree This Folder\scripts\treetxt.py"

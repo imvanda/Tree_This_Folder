@@ -1,0 +1,13 @@
+[project]
+name = "tree-this-folder"
+version = "2.4"
+description = "Add copy and generate folder structure for your right-click. Make it easy for ChatGPT/your colleagues to understand your project structure. Use bat script and Python implementation. Currently it supports six generation formats: TXT, Markdown, puml, Windows default tree, Emoji enhanced tree, and JSON."
+readme = "README.md"
+requires-python = ">=3.13.11"
+dependencies = [
+    "emoji>=2.15.0",
+    "gitignore-parser>=0.1.13",
+    "pyperclip>=1.11.0",
+    "pyside6>=6.10.1",
+    "seedir>=0.5.1",
+]

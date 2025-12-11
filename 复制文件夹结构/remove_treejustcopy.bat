@@ -10,7 +10,11 @@ ping 127.0.0.1 -n 2 >nul
 echo 右键菜单项已删除。
 :: 删除安装文件
 del /s /q "C:\Program Files\Tree This Folder\treejustcopy.ico"
-del /s /q "C:\Program Files\Tree This Folder\treejustcopy.bat"
+del /s /q "C:\Program Files\Tree This Folder\bats\treejustcopy.bat"
+
+rd "C:\Program Files\Tree This Folder\bats\"
+:: 不要用 rd /s /q "C:\Program Files\Tree This Folder\bats\" ，防止把 生成文件夹结构 功能破坏
+
 del /s /q "C:\Program Files\Tree This Folder\remove_treejustcopy.bat"
 pause
 ENDLOCAL
